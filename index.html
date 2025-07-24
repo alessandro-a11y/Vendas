@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Achadinhos Online</title>
+  <link rel="icon" type="image/png" href="fotos/favicon-16x16.png" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fefaf6;
+      color: #2d2d2d;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 30px;
+      background: #fff4ec;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    header img {
+      width: 130px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    header h1 {
+      margin: 10px 0 5px;
+      font-size: 2.8em;
+      color: #d47c3c;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #5e5e5e;
+    }
+
+    .produtos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 50px 20px;
+      gap: 30px;
+      background: #fffaf6;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      padding: 24px;
+      max-width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .card img {
+      max-width: 100%;
+      border-radius: 14px;
+      margin-bottom: 15px;
+      transition: opacity 0.3s ease;
+    }
+
+    .card h2 {
+      font-size: 1.1em;
+      margin: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #3c3c3c;
+      min-height: 48px;
+      text-align: center;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 20px;
+      background: linear-gradient(45deg, #d47c3c, #e88a3c);
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(212, 124, 60, 0.3);
+    }
+
+    .card a:hover {
+      background: linear-gradient(45deg, #c86e31, #d87c30);
+      box-shadow: 0 6px 18px rgba(212, 124, 60, 0.5);
+    }
+
+    .logo-loja {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 50%;
+      padding: 2px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      font-size: 1em;
+      background: #fff4ec;
+      color: #888;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .mascote {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 80px;
+      height: auto;
+      z-index: 1000;
+      animation: floaty 3s ease-in-out infinite;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .produtos {
+        padding: 30px 10px;
+      }
+
+      .card {
+        max-width: 92vw;
+        padding: 18px;
+      }
+
+      .card h2 {
+        font-size: 1em;
+      }
+
+      .card a {
+        padding: 9px 16px;
+        font-size: 0.95em;
+      }
+
+      .mascote {
+        width: 60px;
+        bottom: 15px;
+        right: 15px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <img class="mascote" src="fotos/mascote.jpg" alt="Mascote Achadinhos" />
+    <img src="fotos/foto2.png" alt="White shopping cart with a heart notification above it on an orange background. Below the cart, the text reads ACHADINHOS ONLINE. The design is cheerful and welcoming, suggesting a friendly and inviting online shopping experience." />
+    <h1>Achadinhos Online 🛍️</h1>
+    <p>Os melhores produtos da Shopee, Shein e ML com o menor preço 💸</p>
+    <p>Produtos destaque da semana</p>
+  </header>
+
+  <main class="produtos" id="produtosContainer"></main>
+
+  <footer>
+    <p>&copy; 2025 Achadinhos Online. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const produtos = [
+      {
+        nome: "m10 fones de ouvido sem fio bluetooth-compatível fone de ouvido à prova dtwágua tws música esportes fone de ouvido",
+        preco: "de R$60,00 por R$22,90",
+        imagem: "fotos/foto3.png",
+        link: "https://s.shopee.com.br/4L8cX4EwrS",
+        loja: "shopee"
+    },
+    
+      {
+        nome: "Relógio luxuoso",
+        preco: " de R$80,00 por R$20,50",
+        imagem: "fotos/relógio.png",
+        link: "https://s.shopee.com.br/BJ3aNWyM1",
+        loja: "shopee"
+      },
+    {
+        nome: "Camiseta Masculina Longline Lisa Oversize Caimento Perfeito",
+        preco: "R$19,90",
+        imagem: "fotos/camiseta.png",
+        link: "https://s.shopee.com.br/7V5eKYUrEO",
+        loja: "shopee"
+          },
+          {
+        nome: "Limpador Pincel Esponja de Maquiagem Elétrico USB Automático",
+        preco: "R$29,99",
+        imagem: "fotos/limpador.png",
+        link: "https://s.shopee.com.br/1qRHaX2jXL",
+        loja: "shopee"
+          },
+          {
+        nome: "Organizador de Mesa Multiuso com Gavetas Escritório Maquiagem",
+        preco: "R$36,88",
+        imagem: "fotos/organizador.jpg",
+        link: "https://br.shein.com/OrganizadordeMesaMultiusocomGavetasEscrit%C3%B3rioMaquiagem-p-26455101-cat-4447.html?share_from=null&url_from=GM75075067175&cdn_rsite=ak&ref=www&rep=dir&ret=br",
+        loja: "shein"
+          },
+          {
+        nome: "Conjunto de Camiseta Casual Masculina de Manga Curta com Gola Redonda e Estampa de Slogan de Montanha de Verão e Shorts com Cordão na Cintura Dia dos Pais",
+        preco: "R$74,10",
+        imagem: "fotos/conjunto.jpg",
+        link: "https://br.shein.com/ConjuntodeCamisetaCasualMasculinadeMangaCurtacomGolaRedondaeEstampadeSlogandeMontanhadeVer%C3%A3oeShortscomCord%C3%A3onaCinturaDiadosPais-p-59748983-cat-1975.html?share_from=null&url_from=GM75075067175&cdn_rsite=ak&ref=www&rep=dir&ret=br",
+        loja: "shein"
+          },
+          {
+        nome: "3 Peças Conjunto de Joias Retrô Vintage Elegante e Estiloso, Choker e Brincos Geométricos Versáteis com Pérola",
+        preco: "R$20,95",
+        imagem: "fotos/colar.jpg",
+        link: "https://api-shein.shein.com/h5/sharejump/appjump?link=lrEnUNmaxEh_8_1&localcountry=BR&url_from=GM75075067175",
+        loja: "shein"
+          },
+          {
+        nome: "Conjunto de Moletom com Capuz de Poliéster para Homem",
+        preco: "R$89,90",
+        imagem: "fotos/moletom.jpg",
+        link: "https://br.shein.com/ConjuntodeMoletomcomCapuzdePoli%C3%A9sterparaHomem-ConjuntodeRoupasCasuaisdePrimavera-OutonoDiadosPais-p-53034742-cat-9034.html?share_from=null&url_from=GM75075067175&cdn_rsite=ak&ref=www&rep=dir&ret=brR",
+        loja: "shein"
+          },
+          {
+        nome: "Creatina Monohidratada Pura 500g Dark Lab Unidade",
+        preco: "R$59,90",
+        imagem: "ML/creatina.webp",
+        link: "https://mercadolivre.com/sec/2GxCZAD",
+        loja: "ml"
+          },
+          {
+        nome: "Kit 9 Pares Meias Puma Sapatilha Cano Curto Baixo Original",
+        preco: "R$64,89",
+        imagem: "ML/meia.png",
+        link: "https://mercadolivre.com/sec/32JT5hR",
+        loja: "ml"
+          },
+          {
+        nome: "Nutri Whey Protein Pouch Chocolate 900g Integralmédica",
+        preco: "R$51,29",
+        imagem: "ML/protein.png",
+        link: "https://mercadolivre.com/sec/2Fys4Ny",
+        loja: "ml"
+          },
+          {
+        nome: "Jaqueta De Couro Masculina Slim Forrada Inverno",
+        preco: "R$169,31",
+        imagem: "ML/jaqueta.png",
+        link: "https://mercadolivre.com/sec/1oJQvRQ",
+        loja: "ml"
+          },
+          {
+        nome: "Kit 3 Calças Feminina Legging Grossa Para Academia Cós Alto",
+        preco: "R$49,79",
+        imagem: "ML/leg.png",
+        link: "https://mercadolivre.com/sec/2vWLBpo",
+        loja: "ml"
+          }
+    ]; // <-- Close the produtos array here
+    
+
+    const logos = {
+      shopee: "fotos/shopee.jpg",
+      shein: "fotos/shein.png",
+      ml: "ML/mercado.png"
+    };
+
+    const container = document.getElementById('produtosContainer');
+
+    produtos.forEach(produto => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      const logoSrc = logos[produto.loja] || "";
+      card.innerHTML = `
+        <img src="${produto.imagem}" alt="${produto.nome}">
+        <h2>
+          ${logoSrc ? `<img src="${logoSrc}" class="logo-loja" alt="${produto.loja}">` : ""}
+          ${produto.nome} - ${produto.preco}
+        </h2>
+        <a href="${produto.link}" target="_blank">Ver na ${produto.loja.charAt(0).toUpperCase() + produto.loja.slice(1)}</a>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+  <p>Caso não ache o produto desejado, entre em contato conosco!</p>
+</body>
+</html>

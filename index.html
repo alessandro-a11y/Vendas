@@ -45,6 +45,33 @@
       color: #5e5e5e;
     }
 
+    .categorias {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px 10px;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .categorias button {
+      background: #fff4ec;
+      color: #d47c3c;
+      border: 1px solid #d47c3c;
+      border-radius: 20px;
+      padding: 10px 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .categorias button:hover,
+    .categorias button.ativo {
+      background: #d47c3c;
+      color: #fff;
+    }
+
     .produtos {
       display: flex;
       flex-wrap: wrap;
@@ -171,17 +198,25 @@
         right: 15px;
       }
     }
-
   </style>
 </head>
 <body>
   <header>
     <img class="mascote" src="fotos/mascote.jpg" alt="Mascote Achadinhos" />
-    <img src="fotos/foto2.png" alt="White shopping cart with a heart notification above it on an orange background. Below the cart, the text reads ACHADINHOS ONLINE. The design is cheerful and welcoming, suggesting a friendly and inviting online shopping experience." />
+    <img src="fotos/foto2.png" alt="Logo Achadinhos" />
     <h1>Achadinhos Online 🛍️</h1>
     <p>Os melhores produtos da Shopee, Shein e ML com o menor preço 💸</p>
     <p>Produtos destaque da semana</p>
   </header>
+
+  <nav class="categorias">
+    <button onclick="filtrarProdutos('todos')" class="ativo">Todos</button>
+    <button onclick="filtrarProdutos('roupas')">Roupas</button>
+    <button onclick="filtrarProdutos('acessorios')">Acessórios</button>
+    <button onclick="filtrarProdutos('beleza')">Beleza</button>
+    <button onclick="filtrarProdutos('tecnologia')">Tecnologia</button>
+    <button onclick="filtrarProdutos('suplementos')">Suplementos</button>
+  </nav>
 
   <main class="produtos" id="produtosContainer"></main>
 
@@ -192,123 +227,276 @@
   <script>
     const produtos = [
       {
-        nome: "m10 fones de ouvido sem fio bluetooth-compatível fone de ouvido à prova dtwágua tws música esportes fone de ouvido",
+        nome: "m10 fones de ouvido sem fio bluetooth",
         preco: "de R$60,00 por R$22,90",
         imagem: "fotos/foto3.png",
         link: "https://s.shopee.com.br/4L8cX4EwrS",
-        loja: "shopee"
-    },
-    
+        loja: "shopee",
+        categoria: "tecnologia"
+      },
       {
         nome: "Relógio luxuoso",
-        preco: " de R$80,00 por R$20,50",
+        preco: "de R$80,00 por R$20,50",
         imagem: "fotos/relógio.png",
         link: "https://s.shopee.com.br/BJ3aNWyM1",
-        loja: "shopee"
+        loja: "shopee",
+        categoria: "acessorios"
       },
-    {
-        nome: "Camiseta Masculina Longline Lisa Oversize Caimento Perfeito",
+      {
+        nome: "Camiseta Longline Masculina",
         preco: "R$19,90",
         imagem: "fotos/camiseta.png",
         link: "https://s.shopee.com.br/7V5eKYUrEO",
-        loja: "shopee"
-          },
-          {
-        nome: "Limpador Pincel Esponja de Maquiagem Elétrico USB Automático",
+        loja: "shopee",
+        categoria: "roupas"
+      },
+      {
+        nome: "Limpador Pincel Maquiagem Elétrico",
         preco: "R$29,99",
         imagem: "fotos/limpador.png",
         link: "https://s.shopee.com.br/1qRHaX2jXL",
-        loja: "shopee"
-          },
-          {
-        nome: "Organizador de Mesa Multiuso com Gavetas Escritório Maquiagem",
+        loja: "shopee",
+        categoria: "beleza"
+      },
+      { 
+        nome: "Kit 2 body feminino suplex manga longa duplo premium",
+        preco: "R$34,90-R$74,90",
+        imagem: "fotos/body.jpg",
+        link: "https://s.shopee.com.br/AUjHg7mK9m",
+        loja: "shopee",
+        categoria: "roupas"
+
+      },
+      {
+        nome: "Kit de Organizador Multiuso Plasutil Geladeira dispensa",
+        preco: "R$24,90-R$73,90",
+        imagem: "fotos/organizadorr.jpg",
+        link: "https://s.shopee.com.br/4q4uvx6ElX",
+        loja: "shopee",
+        categoria: "acessorios"
+      },
+      {
+        nome: "Camiseta Masculina de manga longa estilo moda fina",
+        preco: "R$61,95",
+        imagem: "fotos/m-3xl.jpg",
+        link: "https://s.shopee.com.br/2B49lSF5cj",
+        loja: "shopee",
+        categoria: "roupas"
+      },
+      {
+        nome: "s10 fones de ouvido bluetooth mãos livres estereo a prova d'água",
+        preco: "R$6,38",
+        imagem: "fotos/s10_fones.jpg",
+        link: "https://s.shopee.com.br/7KmFvBqBc7",
+        loja: "shopee",
+        categoria: "tecnologia"
+      },
+      {
+        nome: "Kit 3 garrafas térmicas de inox com adesivos",
+        preco: "R$27,99-R$31,99",
+        imagem: "fotos/garrafa.jpg",
+        link: "https://s.shopee.com.br/40VnxMcmFO",
+        loja: "shopee",
+        categoria: "acessorios"
+      },
+            {
+        nome: "caixa de som JBI go3 caixinha de som caixa de som portátil Bluetooth",
+        preco: "R$37,90",
+        imagem: "fotos/jbl.jpg",
+        link: "https://s.shopee.com.br/3Awh4g7UK8",
+        loja: "Shopee",
+        categoria: "tecnologia"
+      },
+      {
+        nome: "Kit 3 Blusa Cacharrel Feminino Canelada Gola Alta Manga Longa Básica, Elegante e Versátil para Mulheres Casual e de Negócios Outono e Inverno Sueter Cacharreu Preto Branco e Marrom",
+        preco: "R$55,11",
+        imagem: "fotos/canelada.jpg",
+        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrBC6NumoyL_8_1&localcountry=BR&url_from=GM75075067175",
+        loja: "shein",
+        categoria: "roupas"
+      },
+      {
+        nome: "Short de Couro Feminino Cintura Alta Bolso Elegante ",
+        preco: "R$29,00",
+        imagem: "fotos/short.jpg",
+        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrBCZTD1FUS_8_1&localcountry=BR&url_from=GM75075067175",
+        loja: "shein",
+        categoria: "roupas"
+      },
+      {
+        nome: "Organizador de Mesa Multiuso",
         preco: "R$36,88",
         imagem: "fotos/organizador.jpg",
-        link: "https://br.shein.com/OrganizadordeMesaMultiusocomGavetasEscrit%C3%B3rioMaquiagem-p-26455101-cat-4447.html?share_from=null&url_from=GM75075067175&cdn_rsite=ak&ref=www&rep=dir&ret=br",
-        loja: "shein"
-          },
-          {
-        nome: "Conjunto de Camiseta Casual Masculina de Manga Curta com Gola Redonda e Estampa de Slogan de Montanha de Verão e Shorts com Cordão na Cintura Dia dos Pais",
+        link: "https://br.shein.com/Organizador...",
+        loja: "shein",
+        categoria: "beleza"
+      },
+      {
+        nome: "Conjunto Masculino Casual",
         preco: "R$74,10",
         imagem: "fotos/conjunto.jpg",
-        link: "https://br.shein.com/ConjuntodeCamisetaCasualMasculinadeMangaCurtacomGolaRedondaeEstampadeSlogandeMontanhadeVer%C3%A3oeShortscomCord%C3%A3onaCinturaDiadosPais-p-59748983-cat-1975.html?share_from=null&url_from=GM75075067175&cdn_rsite=ak&ref=www&rep=dir&ret=br",
-        loja: "shein"
-          },
-          {
-        nome: "3 Peças Conjunto de Joias Retrô Vintage Elegante e Estiloso, Choker e Brincos Geométricos Versáteis com Pérola",
+        link: "https://br.shein.com/Conjunto...",
+        loja: "shein",
+        categoria: "roupas"
+      },
+      {
+        nome: "Conjunto de Joias Retrô",
         preco: "R$20,95",
         imagem: "fotos/colar.jpg",
-        link: "https://api-shein.shein.com/h5/sharejump/appjump?link=lrEnUNmaxEh_8_1&localcountry=BR&url_from=GM75075067175",
-        loja: "shein"
-          },
-          {
-        nome: "Conjunto de Moletom com Capuz de Poliéster para Homem",
+        link: "https://api-shein.shein.com/h5/sharejump...",
+        loja: "shein",
+        categoria: "acessorios"
+      },
+      {
+        nome: "Conjunto de Moletom Masculino",
         preco: "R$89,90",
         imagem: "fotos/moletom.jpg",
-        link: "https://br.shein.com/ConjuntodeMoletomcomCapuzdePoli%C3%A9sterparaHomem-ConjuntodeRoupasCasuaisdePrimavera-OutonoDiadosPais-p-53034742-cat-9034.html?share_from=null&url_from=GM75075067175&cdn_rsite=ak&ref=www&rep=dir&ret=brR",
-        loja: "shein"
-          },
-          {
-        nome: "Creatina Monohidratada Pura 500g Dark Lab Unidade",
+        link: "https://br.shein.com/ConjuntoMoletom...",
+        loja: "shein",
+        categoria: "roupas"
+      },
+      {
+        nome: "Bolsa Plissada de Cor Sólida da Moda.",
+        preco: "R$22,13",
+        imagem: "fotos/bolsa.jpg",
+        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrEI4vYmSgu_8_1&localcountry=BR&url_from=GM75075067175",
+        loja: "shein",
+        categoria: "acessorios"
+      },
+      {
+        nome: "2 Peças Óculos da Moda de Metal Multi-Polígono para Mulheres",
+        preco: "R$30,39",
+        imagem: "fotos/oculos.jpg",
+        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrEIzXaa4CP_8_1&localcountry=BR&url_from=GM75075067175",
+        loja: "shein",
+        categoria: "acessorios"
+      },
+      {
+        nome: "3 Peças/Conjunto Conjunto Elegante de Brincos e Colar com Pingentes Longos para Mulheres.",
+        preco: "R$20,95",
+        imagem: "fotos/flor.jpg",
+        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrEnDLEHiNo_8_1&localcountry=BR&url_from=GM75075067175",
+        loja: "shein",
+        categoria: "acessorios"
+      },
+      {
+        nome: "Organizador De Maquiagem Acrilico 360º Organizador De Maquiagem Giratório",
+        preco: "R$44,76",
+        imagem: "fotos/make.jpg",
+        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrExLcd0ppV_8_1&localcountry=BR&url_from=GM75075067175",
+        loja: "shein",
+        categoria: "beleza"
+      },
+      {
+        nome: "2 peças Conjunto de Colar Pingente de Coração com Pérola para Mulheres",
+        preco: "R$11,78",
+        imagem: "fotos/perola.jpg",
+        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrEyYqkSPMP_8_1&localcountry=BR&url_from=GM75075067175",
+        loja: "shein",
+        categoria: "acessorios"
+      },
+      {
+        nome: "Creatina Monohidratada 500g",
         preco: "R$59,90",
         imagem: "ML/creatina.webp",
         link: "https://mercadolivre.com/sec/2GxCZAD",
-        loja: "ml"
-          },
-          {
-        nome: "Kit 9 Pares Meias Puma Sapatilha Cano Curto Baixo Original",
+        loja: "ml",
+        categoria: "suplementos"
+      },
+      {
+        nome: "Kit Meias Puma 9 Pares",
         preco: "R$64,89",
         imagem: "ML/meia.png",
         link: "https://mercadolivre.com/sec/32JT5hR",
-        loja: "ml"
-          },
-          {
-        nome: "Nutri Whey Protein Pouch Chocolate 900g Integralmédica",
+        loja: "ml",
+        categoria: "roupas"
+      },
+      {
+        nome: "Nutri Whey Protein 900g",
         preco: "R$51,29",
         imagem: "ML/protein.png",
         link: "https://mercadolivre.com/sec/2Fys4Ny",
-        loja: "ml"
-          },
-          {
-        nome: "Jaqueta De Couro Masculina Slim Forrada Inverno",
+        loja: "ml",
+        categoria: "suplementos"
+      },
+      {
+        nome: "Jaqueta de Couro Masculina",
         preco: "R$169,31",
         imagem: "ML/jaqueta.png",
         link: "https://mercadolivre.com/sec/1oJQvRQ",
-        loja: "ml"
-          },
-          {
-        nome: "Kit 3 Calças Feminina Legging Grossa Para Academia Cós Alto",
+        loja: "ml",
+        categoria: "roupas"
+      },
+      {
+        nome: "Kit 3 Calças Legging Feminina",
         preco: "R$49,79",
         imagem: "ML/leg.png",
         link: "https://mercadolivre.com/sec/2vWLBpo",
-        loja: "ml"
-          }
-    ]; // <-- Close the produtos array here
-    
+        loja: "ml",
+        categoria: "roupas"
+      },
+      {
+        nome: "Gel De Limpeza Facial Effaclar 300g La Roche Posay",
+        preco: "R$76,90",
+        imagem: "ML/gel.png",
+        link: "https://mercadolivre.com/sec/1165hxP",
+        loja: "ml",
+        categoria: "beleza"
+      },
+      {
+        nome: "PROHIBIDO PRÉ TREINO 360g - Sabor: Maça Verde - A Combinação Perfeita de 8 Ingredientes que proporcionam energia do início ao fim do seu Treino",
+        preco: "R$74,50",
+        imagem: "ML/pre.png",
+        link: "https://mercadolivre.com/sec/34aqorY",
+        loja: "ml",
+        categoria: "suplementos"
+      },
+      {
+        nome: "Corrente Cordão Colar Masculino Grumet Em Aço Inox Prata Cor Prateado",
+        preco: "R$22,90",
+        imagem: "ML/prata.png",
+        link: "https://mercadolivre.com/sec/2iJXr7Z",
+        loja: "ml",
+        categoria: "acessorios"
+      }
+    ];
 
     const logos = {
-      shopee: "fotos/shopee.jpg",
+      shopee: "fotos/Shopee.jpg",
       shein: "fotos/shein.png",
       ml: "ML/mercado.png"
     };
 
     const container = document.getElementById('produtosContainer');
 
-    produtos.forEach(produto => {
-      const card = document.createElement('div');
-      card.classList.add('card');
-      const logoSrc = logos[produto.loja] || "";
-      card.innerHTML = `
-        <img src="${produto.imagem}" alt="${produto.nome}">
-        <h2>
-          ${logoSrc ? `<img src="${logoSrc}" class="logo-loja" alt="${produto.loja}">` : ""}
-          ${produto.nome} - ${produto.preco}
-        </h2>
-        <a href="${produto.link}" target="_blank">Ver na ${produto.loja.charAt(0).toUpperCase() + produto.loja.slice(1)}</a>
-      `;
-      container.appendChild(card);
-    });
+    function renderizarProdutos(filtro = 'todos') {
+      container.innerHTML = '';
+      produtos.forEach(produto => {
+        if (filtro === 'todos' || produto.categoria === filtro) {
+          const card = document.createElement('div');
+          card.classList.add('card');
+          const logoSrc = logos[produto.loja] || "";
+          card.innerHTML = `
+            <img src="${produto.imagem}" alt="${produto.nome}">
+            <h2>
+              ${logoSrc ? `<img src="${logoSrc}" class="logo-loja" alt="${produto.loja}">` : ""}
+              ${produto.nome} - ${produto.preco}
+            </h2>
+            <a href="${produto.link}" target="_blank">Ver na ${produto.loja.charAt(0).toUpperCase() + produto.loja.slice(1)}</a>
+          `;
+          container.appendChild(card);
+        }
+      });
+    }
+
+    function filtrarProdutos(categoria) {
+      renderizarProdutos(categoria);
+      document.querySelectorAll('.categorias button').forEach(btn => btn.classList.remove('ativo'));
+      const botaoAtivo = [...document.querySelectorAll('.categorias button')].find(b => b.textContent.toLowerCase().includes(categoria));
+      if (botaoAtivo) botaoAtivo.classList.add('ativo');
+    }
+
+    renderizarProdutos();
   </script>
-  <p>Caso não ache o produto desejado, entre em contato conosco!</p>
 </body>
 </html>

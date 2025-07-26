@@ -216,6 +216,7 @@
     <button onclick="filtrarProdutos('beleza')">Beleza</button>
     <button onclick="filtrarProdutos('tecnologia')">Tecnologia</button>
     <button onclick="filtrarProdutos('suplementos')">Suplementos</button>
+    <button onclick="filtrarProdutos('decoracao')">Decoração</button>
   </nav>
 
   <main class="produtos" id="produtosContainer"></main>
@@ -273,7 +274,7 @@
         imagem: "fotos/organizadorr.jpg",
         link: "https://s.shopee.com.br/4q4uvx6ElX",
         loja: "shopee",
-        categoria: "acessorios"
+        categoria: "decoracao"
       },
       {
         nome: "Camiseta Masculina de manga longa estilo moda fina",
@@ -297,103 +298,167 @@
         imagem: "fotos/garrafa.jpg",
         link: "https://s.shopee.com.br/40VnxMcmFO",
         loja: "shopee",
-        categoria: "acessorios"
+        categoria: "decoracao"
       },
             {
         nome: "caixa de som JBI go3 caixinha de som caixa de som portátil Bluetooth",
         preco: "R$37,90",
         imagem: "fotos/jbl.jpg",
         link: "https://s.shopee.com.br/3Awh4g7UK8",
-        loja: "Shopee",
+        loja: "shopee",
         categoria: "tecnologia"
       },
       {
-        nome: "Kit 3 Blusa Cacharrel Feminino Canelada Gola Alta Manga Longa Básica, Elegante e Versátil para Mulheres Casual e de Negócios Outono e Inverno Sueter Cacharreu Preto Branco e Marrom",
-        preco: "R$55,11",
-        imagem: "fotos/canelada.jpg",
-        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrBC6NumoyL_8_1&localcountry=BR&url_from=GM75075067175",
+        nome: "Camiseta Overside Texturizada",
+        preco: "R$44,99",
+        imagem: "fotos/ov.jpg",
+        link: "https://s.shopee.com.br/5fe4kEeRJm",
+        loja: "shopee",
+        categoria: "roupas"
+      },
+      {
+        nome: "Camiseta T-shirt Unisex",
+        preco: "R$49,90",
+        imagem: "fotos/TS.jpg",
+        link: "https://s.shopee.com.br/AUjKVNtArF",
+        loja: "shopee",
+        categoria: "roupas"
+        },
+      {
+        nome: "KIT 2 mini IP camêra wi-fi sem fio",
+        preco: "R$53,90",
+        imagem: "fotos/IP.jpg",
+        link: "https://s.shopee.com.br/9UqnJmvK0o",
+        loja: "shopee",
+        categoria: "tecnologia"
+        },
+      {
+        nome: "short alfaitaria com  detalhes  de elastico",
+        preco: "R$44,31",
+        imagem: "fotos/alfaitaria.jpg",
+        link: "https://onelink.shein.com/15/4vt9jqjhm51l ",
         loja: "shein",
         categoria: "roupas"
       },
       {
-        nome: "Short de Couro Feminino Cintura Alta Bolso Elegante ",
-        preco: "R$29,00",
-        imagem: "fotos/short.jpg",
-        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrBCZTD1FUS_8_1&localcountry=BR&url_from=GM75075067175",
+        nome: "Mini Cuscuzeira Porção Individual Em Alumínio Polido",
+        preco: "R$24,49",
+        imagem: "fotos/mini.png",
+        link: "https://onelink.shein.com/15/4vt9kzx77eix",
+        loja: "shein",
+        categoria: "decoracao"
+      },
+      {
+        nome: "Conjunto Imperdível de Camiseta 100% algodão manga curta e Shorts Tactel",
+        preco: "R$35,93",
+        imagem: "fotos/conjuntos.png",
+        link: "https://onelink.shein.com/15/4vta8mbio8pj",
         loja: "shein",
         categoria: "roupas"
       },
       {
-        nome: "Organizador de Mesa Multiuso",
-        preco: "R$36,88",
-        imagem: "fotos/organizador.jpg",
-        link: "https://br.shein.com/Organizador...",
+        nome: "Kit Quadro Decorativo Vazado Amor Fé Gratidão 3 peças",
+        preco: "R$9,35",
+        imagem: "fotos/quadro.png",
+        link: "https://onelink.shein.com/15/4vt9o8c1cwel",
         loja: "shein",
-        categoria: "beleza"
+        categoria: "decoracao"
       },
       {
-        nome: "Conjunto Masculino Casual",
-        preco: "R$74,10",
-        imagem: "fotos/conjunto.jpg",
-        link: "https://br.shein.com/Conjunto...",
+        nome: "Suportes Prateleiras Organizador de Cozinha/Banheiro/Quarto",
+        preco: "R$12,96",
+        imagem: "fotos/suporte.png",
+        link: "https://onelink.shein.com/15/4vt9pdro7sig",
+        loja: "shein",
+        categoria: "decoracao"
+      },
+      {
+        nome: "2 peças Strass Folha Design Brinco & 1 peça Punho de orelha",
+        preco: "R$R$11,39",
+        imagem: "fotos/brinco.png",
+        link: "https://onelink.shein.com/15/4vvubzy4blzx ",
+        loja: "shein",
+        categoria: "acessorios"
+      },
+      {
+        nome: "Conjunto de 1 Elegante Pulseira e Bracelete em Formato de Trevo",
+        preco: "R$17,09",
+        imagem: "fotos/br.png",
+        link: "https://onelink.shein.com/15/4vvudd9vht0f",
+        loja: "shein",
+        categoria: "acessorios"
+      },
+      {
+        nome: "1 Conjunto de um anel aberto com pedra olho de gato em formato de folha, elegante e luxuoso",
+        preco: "R$14,55",
+        imagem: "fotos/anel.png",
+        link: "https://onelink.shein.com/15/4vvuf8cwsphd",
+        loja: "shein",
+        categoria: "acessorios"
+      },
+      {
+        nome: "5 Peças/Conjunto Grampos de Cabelo Garra de Cabelo Acessórios de Cabelo da Moda para Parte Traseira da Cabeça, Grampos de Beleza",
+        preco: "R$27,12",
+        imagem: "fotos/grampo.png",
+        link: "https://onelink.shein.com/15/4vvufzzdbw2g",
+        loja: "shein",
+        categoria: "acessorios"
+      },
+      {
+        nome: "2 peças/Conjunto Relógios de Pulso Femininos de Quartzo Moda Casual com Mostrador Pequeno e Pulseira de Couro",
+        preco: "R$21,79",
+        imagem: "fotos/RF.png",
+        link: "https://onelink.shein.com/15/4vvuh7e0vdx7",
+        loja: "shein",
+        categoria: "acessorios"
+      },
+      {
+        nome: "Calça Pantalona Alfaiataria Com Cinto Tendencia Outono Primavera 2025",
+        preco: "R$26,97",
+        imagem: "fotos/pantolona.png",
+        link: "https://onelink.shein.com/15/4vvumwl93cp1",
         loja: "shein",
         categoria: "roupas"
       },
       {
-        nome: "Conjunto de Joias Retrô",
-        preco: "R$20,95",
-        imagem: "fotos/colar.jpg",
-        link: "https://api-shein.shein.com/h5/sharejump...",
-        loja: "shein",
-        categoria: "acessorios"
-      },
-      {
-        nome: "Conjunto de Moletom Masculino",
-        preco: "R$89,90",
-        imagem: "fotos/moletom.jpg",
-        link: "https://br.shein.com/ConjuntoMoletom...",
+        nome: "Moletom Canguru Liso Masculino e Feminino Casaco Flanelado Grosso Blusa de Frio Inverno Dia dos Pais",
+        preco: "R$39,90",
+        imagem: "fotos/canguru.png",
+        link: "https://onelink.shein.com/15/4vvuoxlex9gi",
         loja: "shein",
         categoria: "roupas"
       },
       {
-        nome: "Bolsa Plissada de Cor Sólida da Moda.",
-        preco: "R$22,13",
-        imagem: "fotos/bolsa.jpg",
-        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrEI4vYmSgu_8_1&localcountry=BR&url_from=GM75075067175",
+        nome: "Kit 3 Blusas Regata feminina manga Nula canelada Mula Manca premium",
+        preco: "R$36,81",
+        imagem: "fotos/k3.png",
+        link: "https://onelink.shein.com/15/4vvupr6vc93o",
         loja: "shein",
-        categoria: "acessorios"
+        categoria: "roupas"
       },
       {
-        nome: "2 Peças Óculos da Moda de Metal Multi-Polígono para Mulheres",
-        preco: "R$30,39",
-        imagem: "fotos/oculos.jpg",
-        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrEIzXaa4CP_8_1&localcountry=BR&url_from=GM75075067175",
+        nome: "Short Saia Com Fivela Orgânica Neoprene Tendecia Short saia com Pinsa Dourada na frente Short saia franja",
+        preco: "R$31,99",
+        imagem: "fotos/shortsaia.png",
+        link: "https://onelink.shein.com/15/4vvuspqjp1qw",
         loja: "shein",
-        categoria: "acessorios"
+        categoria: "roupas"
       },
       {
-        nome: "3 Peças/Conjunto Conjunto Elegante de Brincos e Colar com Pingentes Longos para Mulheres.",
-        preco: "R$20,95",
-        imagem: "fotos/flor.jpg",
-        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrEnDLEHiNo_8_1&localcountry=BR&url_from=GM75075067175",
+        nome: "Fone de Ouvido Bluetooth P9 - Design Elegante com Microfone Sem Fio",
+        preco: "R$29,76",
+        imagem: "fotos/P9.png",
+        link: "https://onelink.shein.com/15/4vvuvef0zhn3",
         loja: "shein",
-        categoria: "acessorios"
+        categoria: "tecnologia"
       },
       {
-        nome: "Organizador De Maquiagem Acrilico 360º Organizador De Maquiagem Giratório",
-        preco: "R$44,76",
-        imagem: "fotos/make.jpg",
-        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrExLcd0ppV_8_1&localcountry=BR&url_from=GM75075067175",
+        nome: "Caixa de Som c/ 2 Microfones Mini karaoke k12 Auto Falante sem Fio Bluetooth Luzes Led Brincadeiras e Diversão para toda Família.",
+        preco: "R$40,99",
+        imagem: "fotos/C2.png",
+        link: "https://onelink.shein.com/15/4vvuw9zjsw01",
         loja: "shein",
-        categoria: "beleza"
-      },
-      {
-        nome: "2 peças Conjunto de Colar Pingente de Coração com Pérola para Mulheres",
-        preco: "R$11,78",
-        imagem: "fotos/perola.jpg",
-        link: "http://api-shein.shein.com/h5/sharejump/appjump?link=lrEyYqkSPMP_8_1&localcountry=BR&url_from=GM75075067175",
-        loja: "shein",
-        categoria: "acessorios"
+        categoria: "tecnologia"
       },
       {
         nome: "Creatina Monohidratada 500g",

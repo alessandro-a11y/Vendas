@@ -1,0 +1,348 @@
+/*
+ * styles.css - Versão com Filtros no Desktop e Menu Hambúrguer em Mobile
+ */
+
+/* 1. Design Tokens & Configurações Globais */
+:root {
+    --color-primary: #d47c3c;
+    --color-primary-light: #e88a3c;
+    --color-primary-dark: #c86e31;
+    --color-secondary: #fff4ec;
+    --color-background-soft: #fefaf6;
+    --color-text-dark: #2d2d2d;
+    --color-text-mid: #5e5e5e;
+    --color-text-light: #fff;
+    --color-border-light: #e5e5e5;
+    --font-heading: 'Barlow', sans-serif;
+    --font-body: 'Lato', sans-serif;
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-hover: 0 12px 32px rgba(212, 124, 60, 0.18);
+    --radius-pill: 9999px;
+    --transition-fast: 0.3s ease-in-out;
+    --transition-slow: 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --sidebar-width: 250px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--color-background-soft);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+/* 2. Cabeçalho e Títulos */
+.site-header {
+    text-align: center;
+    padding: 50px 20px 30px;
+    background: var(--color-secondary);
+    border-bottom: 1px solid var(--color-border-light);
+    position: relative;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.mascote-logo {
+    width: 130px;
+    border-radius: 50%;
+    transition: transform var(--transition-slow);
+}
+
+.mascote-logo:hover {
+    transform: scale(1.05) rotate(5deg);
+}
+
+.main-logo {
+    display: none;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    margin: 10px 0 5px;
+    font-size: 2.8em;
+    color: var(--color-primary);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.tagline {
+    font-size: 1.2em;
+    color: var(--color-text-mid);
+}
+
+.featured-text {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--color-primary-dark);
+    margin-top: 20px;
+}
+
+/* 3. Botões de Categoria (Layout Horizontal para Desktop) */
+.categorias-desktop {
+    display: none; /* Oculta em mobile */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px 10px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.category-btn {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-pill);
+    padding: 10px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Ícone do Menu Hambúrguer (Mobile) */
+.menu-button {
+    display: none; /* Oculto por padrão */
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger-icon {
+    font-size: 2em;
+    color: var(--color-primary);
+    line-height: 1;
+}
+
+/* 5. Barra Lateral (Mobile) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: #fff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: left 0.3s ease-in-out;
+    padding: 20px;
+    padding-top: 80px;
+    display: none; /* Oculta a barra lateral em desktop */
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar .categorias-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+/* 6. Grid de Produtos */
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-items: center;
+    gap: 30px;
+    padding: 50px 20px;
+    background: var(--color-background-soft);
+}
+
+/* Resto dos estilos (cards, rodapé, mascote) */
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    padding: 24px;
+    max-width: 300px;
+    text-align: center;
+    transition: transform var(--transition-slow), box-shadow var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-image {
+    max-width: 100%;
+    border-radius: 14px;
+    margin-bottom: 15px;
+    transition: transform var(--transition-slow);
+}
+
+.card:hover .card-image {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 1.1em;
+    margin: 14px 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #3c3c3c;
+    min-height: 48px;
+    text-align: center;
+}
+
+.product-name {
+    flex-grow: 1;
+}
+
+.product-price {
+    font-size: 1em;
+    color: var(--color-primary);
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.card-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, var(--color-primary), var(--color-primary-light));
+    color: var(--color-text-light);
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 12px rgba(212, 124, 60, 0.3);
+}
+
+.card-link:hover {
+    background: linear-gradient(45deg, var(--color-primary-dark), var(--color-primary));
+    box-shadow: 0 6px 18px rgba(212, 124, 60, 0.5);
+    transform: translateY(-2px);
+}
+
+.logo-loja {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    padding: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.site-footer {
+    text-align: center;
+    padding: 30px 15px;
+    font-size: 1em;
+    background: var(--color-secondary);
+    color: var(--color-text-mid);
+    border-top: 1px solid var(--color-border-light);
+}
+
+.mascote-flutuante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;
+    height: auto;
+    z-index: 1000;
+    animation: floaty 3s ease-in-out infinite;
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+}
+
+.mascote-flutuante:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+@keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* 7. Responsividade */
+
+@media (min-width: 769px) {
+    .menu-button {
+        display: none; /* Esconde o botão de menu em desktop */
+    }
+    .categorias-desktop {
+        display: flex; /* Exibe os botões de categoria no layout horizontal */
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-button {
+        display: block; /* Exibe o botão de menu em mobile */
+    }
+    .categorias-desktop {
+        display: none; /* Oculta a nav horizontal em mobile */
+    }
+    .sidebar {
+        display: block; /* Exibe a barra lateral */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+    .tagline, .featured-text {
+        font-size: 1em;
+    }
+    .category-btn {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+    .card {
+        padding: 18px;
+    }
+    .card-title {
+        font-size: 1em;
+    }
+    .card-link {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .mascote-flutuante {
+        width: 60px;
+        bottom: 15px;
+        right: 15px;
+    }
+}

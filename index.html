@@ -1,567 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Achadinhos Online</title>
-  <link rel="icon" type="image/png" href="fotos/favicon-16x16.png" />
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #fefaf6;
-      color: #2d2d2d;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      text-align: center;
-      padding: 50px 20px 30px;
-      background: #fff4ec;
-      border-bottom: 1px solid #e5e5e5;
-    }
-
-    header img {
-      width: 130px;
-      border-radius: 50%;
-      margin-bottom: 15px;
-      transition: transform 0.3s ease;
-    }
-
-    header img:hover {
-      transform: scale(1.05);
-    }
-
-    header h1 {
-      margin: 10px 0 5px;
-      font-size: 2.8em;
-      color: #d47c3c;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    header p {
-      font-size: 1.2em;
-      color: #5e5e5e;
-    }
-
-    .categorias {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 20px 10px;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-    }
-
-    .categorias button {
-      background: #fff4ec;
-      color: #d47c3c;
-      border: 1px solid #d47c3c;
-      border-radius: 20px;
-      padding: 10px 18px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .categorias button:hover,
-    .categorias button.ativo {
-      background: #d47c3c;
-      color: #fff;
-    }
-
-    .produtos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 50px 20px;
-      gap: 30px;
-      background: #fffaf6;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-      padding: 24px;
-      max-width: 300px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-    }
-
-    .card img {
-      max-width: 100%;
-      border-radius: 14px;
-      margin-bottom: 15px;
-      transition: opacity 0.3s ease;
-    }
-
-    .card h2 {
-      font-size: 1.1em;
-      margin: 14px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      color: #3c3c3c;
-      min-height: 48px;
-      text-align: center;
-    }
-
-    .card a {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 20px;
-      background: linear-gradient(45deg, #d47c3c, #e88a3c);
-      color: #fff;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(212, 124, 60, 0.3);
-    }
-
-    .card a:hover {
-      background: linear-gradient(45deg, #c86e31, #d87c30);
-      box-shadow: 0 6px 18px rgba(212, 124, 60, 0.5);
-    }
-
-    .logo-loja {
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
-      background: #fff;
-      border: 1px solid #eee;
-      border-radius: 50%;
-      padding: 2px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 15px;
-      font-size: 1em;
-      background: #fff4ec;
-      color: #888;
-      border-top: 1px solid #e5e5e5;
-    }
-
-    .mascote {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 80px;
-      height: auto;
-      z-index: 1000;
-      animation: floaty 3s ease-in-out infinite;
-    }
-
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 2em;
-      }
-
-      .produtos {
-        padding: 30px 10px;
-      }
-
-      .card {
-        max-width: 92vw;
-        padding: 18px;
-      }
-
-      .card h2 {
-        font-size: 1em;
-      }
-
-      .card a {
-        padding: 9px 16px;
-        font-size: 0.95em;
-      }
-
-      .mascote {
-        width: 60px;
-        bottom: 15px;
-        right: 15px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Achadinhos Online 🛍️</title>
+    <meta name="description" content="Encontre os melhores produtos da Shopee, Shein e Mercado Livre com os menores preços." />
+    <link rel="icon" type="image/png" href="fotos/favicon-16x16.png" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <img class="mascote" src="fotos/mascote.jpg" alt="Mascote Achadinhos" />
-    <img src="fotos/foto2.png" alt="Logo Achadinhos" />
-    <h1>Achadinhos Online 🛍️</h1>
-    <p>Os melhores produtos da Shopee, Shein e ML com o menor preço 💸</p>
-    <p>Produtos destaque da semana</p>
-  </header>
 
-  <nav class="categorias">
-    <button onclick="filtrarProdutos('todos')" class="ativo">Todos</button>
-    <button onclick="filtrarProdutos('roupas')">Roupas</button>
-    <button onclick="filtrarProdutos('acessorios')">Acessórios</button>
-    <button onclick="filtrarProdutos('beleza')">Beleza</button>
-    <button onclick="filtrarProdutos('tecnologia')">Tecnologia</button>
-    <button onclick="filtrarProdutos('suplementos')">Suplementos</button>
-    <button onclick="filtrarProdutos('decoracao')">Decoração</button>
-  </nav>
+    <header class="site-header">
+        <div class="header-content">
+            <button id="menuButton" class="menu-button" aria-label="Abrir menu de categorias">
+                <span class="hamburger-icon">☰</span>
+            </button>
+            <a href="#" class="logo-link" aria-label="Página inicial Achadinhos Online">
+                <img class="mascote-logo" src="fotos/mascote.jpg" alt="Mascote Achadinhos" />
+                <img class="main-logo" src="fotos/foto2.png" alt="Logo Achadinhos" />
+            </a>
+            <h1>Achadinhos Online 🛍️</h1>
+            <p class="tagline">Os melhores produtos da Shopee, Shein e ML com o menor preço 💸</p>
+        </div>
+        
+        <nav class="categorias-desktop">
+            <button class="category-btn active" data-categoria="todos">Todos</button>
+            <button class="category-btn" data-categoria="roupas">Roupas</button>
+            <button class="category-btn" data-categoria="acessorios">Acessórios</button>
+            <button class="category-btn" data-categoria="beleza">Beleza</button>
+            <button class="category-btn" data-categoria="tecnologia">Tecnologia</button>
+            <button class="category-btn" data-categoria="suplementos">Suplementos</button>
+            <button class="category-btn" data-categoria="decoracao">Decoração</button>
+        </nav>
+    </header>
 
-  <main class="produtos" id="produtosContainer"></main>
+    <aside class="sidebar" id="sidebar">
+        <nav class="categorias-nav">
+            <button class="category-btn active" data-categoria="todos">Todos</button>
+            <button class="category-btn" data-categoria="roupas">Roupas</button>
+            <button class="category-btn" data-categoria="acessorios">Acessórios</button>
+            <button class="category-btn" data-categoria="beleza">Beleza</button>
+            <button class="category-btn" data-categoria="tecnologia">Tecnologia</button>
+            <button class="category-btn" data-categoria="suplementos">Suplementos</button>
+            <button class="category-btn" data-categoria="decoracao">Decoração</button>
+        </nav>
+    </aside>
 
-  <footer>
-    <p>&copy; 2025 Achadinhos Online. Todos os direitos reservados.</p>
-  </footer>
+    <main class="produtos-grid" id="produtosContainer">
+        <p class="featured-text">Produtos destaque da semana</p>
+    </main>
 
-  <script>
-    const produtos = [
-      {
-        nome: "m10 fones de ouvido sem fio bluetooth",
-        preco: "de R$60,00 por R$22,90",
-        imagem: "fotos/foto3.png",
-        link: "https://s.shopee.com.br/4L8cX4EwrS",
-        loja: "shopee",
-        categoria: "tecnologia"
-      },
-      {
-        nome: "Relógio luxuoso",
-        preco: "de R$80,00 por R$20,50",
-        imagem: "fotos/relógio.png",
-        link: "https://s.shopee.com.br/BJ3aNWyM1",
-        loja: "shopee",
-        categoria: "acessorios"
-      },
-      {
-        nome: "Camiseta Longline Masculina",
-        preco: "R$19,90",
-        imagem: "fotos/camiseta.png",
-        link: "https://s.shopee.com.br/7V5eKYUrEO",
-        loja: "shopee",
-        categoria: "roupas"
-      },
-      {
-        nome: "Limpador Pincel Maquiagem Elétrico",
-        preco: "R$29,99",
-        imagem: "fotos/limpador.png",
-        link: "https://s.shopee.com.br/1qRHaX2jXL",
-        loja: "shopee",
-        categoria: "beleza"
-      },
-      { 
-        nome: "Kit 2 body feminino suplex manga longa duplo premium",
-        preco: "R$34,90-R$74,90",
-        imagem: "fotos/body.jpg",
-        link: "https://s.shopee.com.br/AUjHg7mK9m",
-        loja: "shopee",
-        categoria: "roupas"
+    <footer class="site-footer">
+        <p>&copy; 2025 Achadinhos Online. Todos os direitos reservados.</p>
+    </footer>
 
-      },
-      {
-        nome: "Kit de Organizador Multiuso Plasutil Geladeira dispensa",
-        preco: "R$24,90-R$73,90",
-        imagem: "fotos/organizadorr.jpg",
-        link: "https://s.shopee.com.br/4q4uvx6ElX",
-        loja: "shopee",
-        categoria: "decoracao"
-      },
-      {
-        nome: "Camiseta Masculina de manga longa estilo moda fina",
-        preco: "R$61,95",
-        imagem: "fotos/m-3xl.jpg",
-        link: "https://s.shopee.com.br/2B49lSF5cj",
-        loja: "shopee",
-        categoria: "roupas"
-      },
-      {
-        nome: "s10 fones de ouvido bluetooth mãos livres estereo a prova d'água",
-        preco: "R$6,38",
-        imagem: "fotos/s10_fones.jpg",
-        link: "https://s.shopee.com.br/7KmFvBqBc7",
-        loja: "shopee",
-        categoria: "tecnologia"
-      },
-      {
-        nome: "Kit 3 garrafas térmicas de inox com adesivos",
-        preco: "R$27,99-R$31,99",
-        imagem: "fotos/garrafa.jpg",
-        link: "https://s.shopee.com.br/40VnxMcmFO",
-        loja: "shopee",
-        categoria: "decoracao"
-      },
-            {
-        nome: "caixa de som JBI go3 caixinha de som caixa de som portátil Bluetooth",
-        preco: "R$37,90",
-        imagem: "fotos/jbl.jpg",
-        link: "https://s.shopee.com.br/3Awh4g7UK8",
-        loja: "shopee",
-        categoria: "tecnologia"
-      },
-      {
-        nome: "Camiseta Overside Texturizada",
-        preco: "R$44,99",
-        imagem: "fotos/ov.jpg",
-        link: "https://s.shopee.com.br/5fe4kEeRJm",
-        loja: "shopee",
-        categoria: "roupas"
-      },
-      {
-        nome: "Camiseta T-shirt Unisex",
-        preco: "R$49,90",
-        imagem: "fotos/TS.jpg",
-        link: "https://s.shopee.com.br/AUjKVNtArF",
-        loja: "shopee",
-        categoria: "roupas"
-        },
-      {
-        nome: "KIT 2 mini IP camêra wi-fi sem fio",
-        preco: "R$53,90",
-        imagem: "fotos/IP.jpg",
-        link: "https://s.shopee.com.br/9UqnJmvK0o",
-        loja: "shopee",
-        categoria: "tecnologia"
-        },
-      {
-        nome: "short alfaitaria com  detalhes  de elastico",
-        preco: "R$44,31",
-        imagem: "fotos/alfaitaria.jpg",
-        link: "https://onelink.shein.com/15/4vt9jqjhm51l ",
-        loja: "shein",
-        categoria: "roupas"
-      },
-      {
-        nome: "Mini Cuscuzeira Porção Individual Em Alumínio Polido",
-        preco: "R$24,49",
-        imagem: "fotos/mini.png",
-        link: "https://onelink.shein.com/15/4vt9kzx77eix",
-        loja: "shein",
-        categoria: "decoracao"
-      },
-      {
-        nome: "Conjunto Imperdível de Camiseta 100% algodão manga curta e Shorts Tactel",
-        preco: "R$35,93",
-        imagem: "fotos/conjuntos.png",
-        link: "https://onelink.shein.com/15/4vta8mbio8pj",
-        loja: "shein",
-        categoria: "roupas"
-      },
-      {
-        nome: "Kit Quadro Decorativo Vazado Amor Fé Gratidão 3 peças",
-        preco: "R$9,35",
-        imagem: "fotos/quadro.png",
-        link: "https://onelink.shein.com/15/4vt9o8c1cwel",
-        loja: "shein",
-        categoria: "decoracao"
-      },
-      {
-        nome: "Suportes Prateleiras Organizador de Cozinha/Banheiro/Quarto",
-        preco: "R$12,96",
-        imagem: "fotos/suporte.png",
-        link: "https://onelink.shein.com/15/4vt9pdro7sig",
-        loja: "shein",
-        categoria: "decoracao"
-      },
-      {
-        nome: "2 peças Strass Folha Design Brinco & 1 peça Punho de orelha",
-        preco: "R$R$11,39",
-        imagem: "fotos/brinco.png",
-        link: "https://onelink.shein.com/15/4vvubzy4blzx ",
-        loja: "shein",
-        categoria: "acessorios"
-      },
-      {
-        nome: "Conjunto de 1 Elegante Pulseira e Bracelete em Formato de Trevo",
-        preco: "R$17,09",
-        imagem: "fotos/br.png",
-        link: "https://onelink.shein.com/15/4vvudd9vht0f",
-        loja: "shein",
-        categoria: "acessorios"
-      },
-      {
-        nome: "1 Conjunto de um anel aberto com pedra olho de gato em formato de folha, elegante e luxuoso",
-        preco: "R$14,55",
-        imagem: "fotos/anel.png",
-        link: "https://onelink.shein.com/15/4vvuf8cwsphd",
-        loja: "shein",
-        categoria: "acessorios"
-      },
-      {
-        nome: "5 Peças/Conjunto Grampos de Cabelo Garra de Cabelo Acessórios de Cabelo da Moda para Parte Traseira da Cabeça, Grampos de Beleza",
-        preco: "R$27,12",
-        imagem: "fotos/grampo.png",
-        link: "https://onelink.shein.com/15/4vvufzzdbw2g",
-        loja: "shein",
-        categoria: "acessorios"
-      },
-      {
-        nome: "2 peças/Conjunto Relógios de Pulso Femininos de Quartzo Moda Casual com Mostrador Pequeno e Pulseira de Couro",
-        preco: "R$21,79",
-        imagem: "fotos/RF.png",
-        link: "https://onelink.shein.com/15/4vvuh7e0vdx7",
-        loja: "shein",
-        categoria: "acessorios"
-      },
-      {
-        nome: "Calça Pantalona Alfaiataria Com Cinto Tendencia Outono Primavera 2025",
-        preco: "R$26,97",
-        imagem: "fotos/pantolona.png",
-        link: "https://onelink.shein.com/15/4vvumwl93cp1",
-        loja: "shein",
-        categoria: "roupas"
-      },
-      {
-        nome: "Moletom Canguru Liso Masculino e Feminino Casaco Flanelado Grosso Blusa de Frio Inverno Dia dos Pais",
-        preco: "R$39,90",
-        imagem: "fotos/canguru.png",
-        link: "https://onelink.shein.com/15/4vvuoxlex9gi",
-        loja: "shein",
-        categoria: "roupas"
-      },
-      {
-        nome: "Kit 3 Blusas Regata feminina manga Nula canelada Mula Manca premium",
-        preco: "R$36,81",
-        imagem: "fotos/k3.png",
-        link: "https://onelink.shein.com/15/4vvupr6vc93o",
-        loja: "shein",
-        categoria: "roupas"
-      },
-      {
-        nome: "Short Saia Com Fivela Orgânica Neoprene Tendecia Short saia com Pinsa Dourada na frente Short saia franja",
-        preco: "R$31,99",
-        imagem: "fotos/shortsaia.png",
-        link: "https://onelink.shein.com/15/4vvuspqjp1qw",
-        loja: "shein",
-        categoria: "roupas"
-      },
-      {
-        nome: "Fone de Ouvido Bluetooth P9 - Design Elegante com Microfone Sem Fio",
-        preco: "R$29,76",
-        imagem: "fotos/P9.png",
-        link: "https://onelink.shein.com/15/4vvuvef0zhn3",
-        loja: "shein",
-        categoria: "tecnologia"
-      },
-      {
-        nome: "Caixa de Som c/ 2 Microfones Mini karaoke k12 Auto Falante sem Fio Bluetooth Luzes Led Brincadeiras e Diversão para toda Família.",
-        preco: "R$40,99",
-        imagem: "fotos/C2.png",
-        link: "https://onelink.shein.com/15/4vvuw9zjsw01",
-        loja: "shein",
-        categoria: "tecnologia"
-      },
-      {
-        nome: "Creatina Monohidratada 500g",
-        preco: "R$59,90",
-        imagem: "ML/creatina.webp",
-        link: "https://mercadolivre.com/sec/2GxCZAD",
-        loja: "ml",
-        categoria: "suplementos"
-      },
-      {
-        nome: "Kit Meias Puma 9 Pares",
-        preco: "R$64,89",
-        imagem: "ML/meia.png",
-        link: "https://mercadolivre.com/sec/32JT5hR",
-        loja: "ml",
-        categoria: "roupas"
-      },
-      {
-        nome: "Nutri Whey Protein 900g",
-        preco: "R$51,29",
-        imagem: "ML/protein.png",
-        link: "https://mercadolivre.com/sec/2Fys4Ny",
-        loja: "ml",
-        categoria: "suplementos"
-      },
-      {
-        nome: "Jaqueta de Couro Masculina",
-        preco: "R$169,31",
-        imagem: "ML/jaqueta.png",
-        link: "https://mercadolivre.com/sec/1oJQvRQ",
-        loja: "ml",
-        categoria: "roupas"
-      },
-      {
-        nome: "Kit 3 Calças Legging Feminina",
-        preco: "R$49,79",
-        imagem: "ML/leg.png",
-        link: "https://mercadolivre.com/sec/2vWLBpo",
-        loja: "ml",
-        categoria: "roupas"
-      },
-      {
-        nome: "Gel De Limpeza Facial Effaclar 300g La Roche Posay",
-        preco: "R$76,90",
-        imagem: "ML/gel.png",
-        link: "https://mercadolivre.com/sec/1165hxP",
-        loja: "ml",
-        categoria: "beleza"
-      },
-      {
-        nome: "PROHIBIDO PRÉ TREINO 360g - Sabor: Maça Verde - A Combinação Perfeita de 8 Ingredientes que proporcionam energia do início ao fim do seu Treino",
-        preco: "R$74,50",
-        imagem: "ML/pre.png",
-        link: "https://mercadolivre.com/sec/34aqorY",
-        loja: "ml",
-        categoria: "suplementos"
-      },
-      {
-        nome: "Corrente Cordão Colar Masculino Grumet Em Aço Inox Prata Cor Prateado",
-        preco: "R$22,90",
-        imagem: "ML/prata.png",
-        link: "https://mercadolivre.com/sec/2iJXr7Z",
-        loja: "ml",
-        categoria: "acessorios"
-      }
-    ];
+    <img class="mascote-flutuante" src="fotos/mascote.jpg" alt="Mascote Achadinhos Online" />
 
-    const logos = {
-      shopee: "fotos/Shopee.jpg",
-      shein: "fotos/shein.png",
-      ml: "ML/mercado.png"
-    };
-
-    const container = document.getElementById('produtosContainer');
-
-    function renderizarProdutos(filtro = 'todos') {
-      container.innerHTML = '';
-      produtos.forEach(produto => {
-        if (filtro === 'todos' || produto.categoria === filtro) {
-          const card = document.createElement('div');
-          card.classList.add('card');
-          const logoSrc = logos[produto.loja] || "";
-          card.innerHTML = `
-            <img src="${produto.imagem}" alt="${produto.nome}">
-            <h2>
-              ${logoSrc ? `<img src="${logoSrc}" class="logo-loja" alt="${produto.loja}">` : ""}
-              ${produto.nome} - ${produto.preco}
-            </h2>
-            <a href="${produto.link}" target="_blank">Ver na ${produto.loja.charAt(0).toUpperCase() + produto.loja.slice(1)}</a>
-          `;
-          container.appendChild(card);
-        }
-      });
-    }
-
-    function filtrarProdutos(categoria) {
-      renderizarProdutos(categoria);
-      document.querySelectorAll('.categorias button').forEach(btn => btn.classList.remove('ativo'));
-      const botaoAtivo = [...document.querySelectorAll('.categorias button')].find(b => b.textContent.toLowerCase().includes(categoria));
-      if (botaoAtivo) botaoAtivo.classList.add('ativo');
-    }
-
-    renderizarProdutos();
-  </script>
+    <script src="Js/Logica.js"></script>
 </body>
 </html>

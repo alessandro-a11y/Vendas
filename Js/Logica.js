@@ -295,221 +295,135 @@ const produtos = [
         loja: "ml",
         categoria: "acessorios"
     },
+    //editar daqui
+   ,
     {
-        nome: "Kit de maquiagem",
-        preco: "R$ 49,99",
-        imagem: "Shein/Maquiagem-kit.png",
-        link: "https://br.shein.com/SHEGLAM-Kit-de-Maquiagem-Completo-com-9-Pcs-p-15655761-cat-4328.html",
-        loja: "shein",
-        categoria: "beleza"
-    },
-    {
-        nome: "Vestido midi liso",
-        preco: "R$ 89,90",
-        imagem: "Shein/Vestido-midi.png",
-        link: "https://br.shein.com/Vestido-de-manga-borboleta-s%C3%B3lida-p-10659615-cat-1727.html",
-        loja: "shein",
-        categoria: "roupas"
-    },
-    {
-        nome: "Garrafa de água com marcador de tempo",
-        preco: "R$ 35,50",
-        imagem: "Shein/garrafa.png",
-        link: "https://br.shein.com/Garrafa-de-%C3%A1gua-com-marcador-de-tempo-p-10905437-cat-2453.html",
-        loja: "shein",
-        categoria: "acessorios"
-    },
-    {
-        nome: "Copo Térmico Stanley Classic",
-        preco: "R$ 150,00",
-        imagem: "ML/Stanley.png",
-        link: "https://mercadolivre.com/sec/24vD4yT",
+        nome: "Copo Térmico Para Café Com Visor Temperatura 450ml Inox",
+        preco: "R$ 34,31",
+        imagem: "ML/Stanley.webp",
+        link: "https://mercadolivre.com/sec/1n1vbJJ",
         loja: "ml",
         categoria: "acessorios"
     },
     {
-        nome: "Tênis casual de couro",
-        preco: "R$ 120,00",
-        imagem: "Shein/Tenis.png",
-        link: "https://br.shein.com/Homens-T%C3%AAnis-s%C3%B3lido-simples-p-11145625-cat-1985.html",
-        loja: "shein",
-        categoria: "roupas"
-    },
-    {
-        nome: "kit de pincéis de maquiagem",
-        preco: "R$ 29,99",
-        imagem: "Shein/Pinceis.png",
-        link: "https://br.shein.com/15pcs-Conjunto-de-pincel-de-maquiagem-de-fibra-p-9943640-cat-2342.html",
-        loja: "shein",
-        categoria: "beleza"
-    },
-    {
-        nome: "kit com 5 relógios masculino",
-        preco: "R$ 49,90",
-        imagem: "shopee/relogio.png",
-        link: "https://s.shopee.com.br/1090XQ2l3B",
-        loja: "shopee",
-        categoria: "acessorios"
-    },
-    {
-        nome: "Luminária de led",
-        preco: "R$ 15,00",
-        imagem: "shopee/luminaria.png",
-        link: "https://s.shopee.com.br/9pSgY7jC52",
-        loja: "shopee",
-        categoria: "decoracao"
-    },
-    {
-        nome: "Creatina",
-        preco: "R$ 79,90",
-        imagem: "ML/creatina.png",
-        link: "https://mercadolivre.com/sec/2L5m2Q5",
+        nome: "Dilabol Pump Pré Treino Pote 300g Sabor Frutas Vermelhas Diabo Verde - FTW",
+        preco: "R$ 64,93",
+        imagem: "ML/djabo.webp",
+        link: "https://mercadolivre.com/sec/2aSBbr7",
         loja: "ml",
         categoria: "suplementos"
     },
     {
-        nome: "kit 100 velas",
-        preco: "R$ 24,90",
-        imagem: "ML/velas.png",
-        link: "https://mercadolivre.com/sec/2eFp3b5",
+        nome: "kit 24 velas",
+        preco: "R$ 37,28",
+        imagem: "ML/velas.webp",
+        link: "https://mercadolivre.com/sec/1wyWmfu",
         loja: "ml",
         categoria: "decoracao"
     },
     {
-        nome: "kit 40 velas",
-        preco: "R$ 15,00",
-        imagem: "ML/vela2.png",
-        link: "https://mercadolivre.com/sec/24b6f4g",
+        nome: "Barra Porta Fixa Exercicio Costas Braços Crossfit Musculação Cor Prateado",
+        preco: "R$ 43,90",
+        imagem: "ML/barra.webp",
+        link: "https://mercadolivre.com/sec/2cQzRym",
         loja: "ml",
         categoria: "decoracao"
     },
     {
-        nome: "Fita de led usb 5m",
-        preco: "R$ 19,90",
-        imagem: "shopee/fita-de-led.png",
-        link: "https://s.shopee.com.br/6fK9F1bY9o",
-        loja: "shopee",
-        categoria: "decoracao"
-    },
-    {
-        nome: "Kit 4 Potes Herméticos",
-        preco: "R$ 49,90",
-        imagem: "ML/pote-hermetico.png",
+        nome: "Óculos Esportivo De Sol Ciclismo Corrida Espelhado Uv400",
+        preco: "R$ 52,39",
+        imagem: "ML/oculosc.webp",
         link: "https://mercadolivre.com/sec/2B1u82d",
         loja: "ml",
         categoria: "decoracao"
     },
     {
-        nome: "Mini processador de alimentos",
-        preco: "R$ 25,00",
-        imagem: "shopee/mini-processador.png",
-        link: "https://s.shopee.com.br/2f5t4ZqD2W",
-        loja: "shopee",
-        categoria: "tecnologia"
-    },
-    {
-        nome: "Mixer e mini liquidificador portátil",
-        preco: "R$ 22,00",
-        imagem: "shopee/mini-liquidificador.png",
-        link: "https://s.shopee.com.br/104P5S4FzX",
-        loja: "shopee",
-        categoria: "tecnologia"
-    },
-    {
-        nome: "Projetor Astronauta Starry Sky ",
-        preco: "R$ 69,90",
-        imagem: "shopee/projetor.png",
+        nome: "Kit camisa e short Compressão",
+        preco: "R$ 94,90",
+        imagem: "fotos/compressao.jpg",
         link: "https://s.shopee.com.br/6007Vp00iA",
-        loja: "shopee",
-        categoria: "tecnologia"
-    },
-    {
-        nome: "Kit com 5 bodys",
-        preco: "R$ 49,99",
-        imagem: "shopee/body.png",
-        link: "https://s.shopee.com.br/AUmY4d0b6u",
         loja: "shopee",
         categoria: "roupas"
     },
     {
+        nome: "Lavadora alta pressão",
+        preco: "R$ 88,98 - R$ 115,90",
+        imagem: "fotos/pressao.jpg",
+        link: "https://s.shopee.com.br/AUmY4d0b6u",
+        loja: "shopee",
+        categoria: "tecnologia"
+    },
+    {
         nome: "Máquina de cortar cabelo e barba",
-        preco: "R$ 35,00",
-        imagem: "shopee/cortador.png",
-        link: "https://s.shopee.com.br/7UxF4R0Gk3",
+        preco: "R$ 20,59",
+        imagem: "fotos/maquina.jpg",
+        link: "https://s.shopee.com.br/qZMqvORPt",
         loja: "shopee",
         categoria: "beleza"
     },
     {
-        nome: "Relógio masculino analógico",
-        preco: "R$ 25,00",
-        imagem: "shopee/relogio2.png",
-        link: "https://s.shopee.com.br/8L0d1c0wXq",
+        nome: "Espelho Oval grande com Led",
+        preco: "R$ 56,90 - R$ 149,90",
+        imagem: "fotos/oval.jpg",
+        link: "https://s.shopee.com.br/7V6GmehBqg",
+        loja: "shopee",
+        categoria: "decoracao"
+    },
+    {
+        nome: "Tênis masculino",
+        preco: "R$ 47,90 a R$ 67,90",
+        imagem: "fotos/mac.jpg",
+        link: "https://s.shopee.com.br/5py2nBFdXK",
         loja: "shopee",
         categoria: "acessorios"
     },
     {
-        nome: "Tênis masculino preto",
-        preco: "R$ 90,00",
-        imagem: "shopee/tenis2.png",
-        link: "https://s.shopee.com.br/4V4n7wP6A7",
-        loja: "shopee",
-        categoria: "roupas"
-    },
-    {
-        nome: "Whey Protein",
-        preco: "R$ 89,90",
-        imagem: "ML/whey.png",
-        link: "https://mercadolivre.com/sec/1k7Lp5K",
+        nome: "Suplemento Tasty Whey 3w Gourmet Whey Protein Adaptogen Science Pote 900g Sabor Chocomaltine",
+        preco: "R$ 149,90",
+        imagem: "ML/whey900.webp",
+        link: "https://mercadolivre.com/sec/1PcDK8U",
         loja: "ml",
         categoria: "suplementos"
     },
     {
-        nome: "Kit 12 Esmaltes Gel",
-        preco: "R$ 39,90",
-        imagem: "ML/esmaltes.png",
-        link: "https://mercadolivre.com/sec/1L6p9R5",
+        nome: "Creatina 100% Pura 150g Integralmédica",
+        preco: "R$ 32,90",
+        imagem: "ML/integral.webp",
+        link: "https://mercadolivre.com/sec/1peUBJA",
         loja: "ml",
         categoria: "beleza"
     },
     {
-        nome: "Kit 5 Calças moletom",
-        preco: "R$ 99,90",
-        imagem: "shopee/moletom.png",
-        link: "https://s.shopee.com.br/8L0ddy4TjY",
+        nome: "Camiseta T-shirt 100% algodão Vivo Por Ele",
+        preco: "R$ 18,90-34,90",
+        imagem: "fotos/jesus.jpg",
+        link: "https://s.shopee.com.br/7ATQMbW0uQ",
         loja: "shopee",
         categoria: "roupas"
     },
     {
-        nome: "Anel de Prata Ajustável",
-        preco: "R$ 29,90",
-        imagem: "shopee/anel.png",
-        link: "https://s.shopee.com.br/5V7e8y7z8P",
-        loja: "shopee",
-        categoria: "acessorios"
+        nome: "Calça Masculina Sarja Premium Esporte Fino Bolso Faca Lycra",
+        preco: "R$ 65,98",
+        imagem: "ML/calças.webp",
+        link: "https://mercadolivre.com/sec/2R8Jb23",
+        loja: "ml",
+        categoria: "roupas"
     },
     {
-        nome: "Luminária de Mesa",
-        preco: "R$ 29,90",
-        imagem: "ML/luminaria2.png",
-        link: "https://mercadolivre.com/sec/2g2o9p0",
+        nome: "Monitor Led Widescreen Hd Hayom 19 Hdmi E Vga 60hz Top Cor Preto",
+        preco: "R$ 287,99",
+        imagem: "ML/monitor.webp",
+        link: "https://mercadolivre.com/sec/2645G3M",
         loja: "ml",
         categoria: "decoracao"
     },
     {
-        nome: "Mesa de centro",
-        preco: "R$ 150,00",
-        imagem: "ML/mesa.png",
-        link: "https://mercadolivre.com/sec/2g2o9p0",
+        nome: "Kit Gamer Completo Mobilador Teclado Mouse Cor Preto Tipo C Exbom",
+        preco: "R$ 69,90",
+        imagem: "ML/kit-gamer.webp",
+        link: "https://mercadolivre.com/sec/2FSNLKU",
         loja: "ml",
-        categoria: "decoracao"
-    },
-    {
-        nome: "Corrente Cordão Colar Masculino Grumet Em Aço Inox Prata Cor Prateado",
-        preco: "R$ 22,90",
-        imagem: "ML/prata.png",
-        link: "https://mercadolivre.com/sec/2iJXr7Z",
-        loja: "ml",
-        categoria: "acessorios"
+        categoria: "tecnologia"
     }
 ];
 

@@ -124,16 +124,17 @@ h1 {
 }
 
 /* 4. Ícone do Menu Hambúrguer (Mobile) */
-.menu-button {
-    display: none; /* Oculto por padrão */
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 1001;
+.menu-button {               /* linha 129 */
+    display: none;           /* linha 130 */
+    position: fixed;         /* linha 132 (antes era absolute) */
+    top: 20px;               /* linha 133 */
+    left: 5px;              /* linha 134 */
+    background: transparent; /* linha 135 */
+    border: none;            /* linha 136 */
+    cursor: pointer;         /* linha 137 */
+    z-index: 1100;           /* linha 138 (aumentei um pouco pra garantir sobreposição da sidebar) */
 }
+
 
 .hamburger-icon {
     font-size: 2em;

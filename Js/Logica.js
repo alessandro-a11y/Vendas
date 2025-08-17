@@ -391,7 +391,7 @@ const produtos = [
         imagem: "ML/integral.webp",
         link: "https://mercadolivre.com/sec/1peUBJA",
         loja: "ml",
-        categoria: "beleza"
+        categoria: "suplementos"
     },
     {
         nome: "Camiseta T-shirt 100% algodão Vivo Por Ele",

@@ -1,9 +1,10 @@
 /*
- * styles.css - Versão com Filtros no Desktop e Menu Hambúrguer em Mobile
+ * styles.css - Versão Premium com Design Moderno e Animações
  */
 
 /* 1. Design Tokens & Configurações Globais */
 :root {
+    /* Cores principais */
     --color-primary: #d47c3c;
     --color-primary-light: #e88a3c;
     --color-primary-dark: #c86e31;
@@ -13,20 +14,51 @@
     --color-text-mid: #5e5e5e;
     --color-text-light: #fff;
     --color-border-light: #e5e5e5;
+    
+    /* Gradientes modernos */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    --gradient-soft: linear-gradient(180deg, #ffffff 0%, var(--color-secondary) 100%);
+    --gradient-overlay: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.03) 100%);
+    
+    /* Tipografia */
     --font-heading: 'Barlow', sans-serif;
     --font-body: 'Lato', sans-serif;
+    
+    /* Sombras modernas */
+    --shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.16);
     --shadow-hover: 0 12px 32px rgba(212, 124, 60, 0.18);
+    --shadow-glow: 0 0 20px rgba(212, 124, 60, 0.3);
+    
+    /* Raios e espaçamentos */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
     --radius-pill: 9999px;
-    --transition-fast: 0.3s ease-in-out;
+    
+    /* Transições suaves */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    --sidebar-width: 250px;
+    --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Dimensões */
+    --sidebar-width: 280px;
+    --header-height: 140px;
 }
 
+/* 2. Reset e Base */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -34,15 +66,29 @@ body {
     background: var(--color-background-soft);
     color: var(--color-text-dark);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* 2. Cabeçalho e Títulos */
+/* 3. Cabeçalho com Efeito Glassmorphism */
 .site-header {
     text-align: center;
     padding: 50px 20px 30px;
-    background: var(--color-secondary);
+    background: var(--gradient-soft);
     border-bottom: 1px solid var(--color-border-light);
     position: relative;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.site-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-overlay);
+    pointer-events: none;
 }
 
 .header-content {
@@ -50,22 +96,35 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 .logo-link {
     display: flex;
     align-items: center;
     gap: 15px;
+    text-decoration: none;
+    transition: transform var(--transition-base);
+}
+
+.logo-link:hover {
+    transform: translateY(-3px);
 }
 
 .mascote-logo {
     width: 130px;
+    height: 130px;
     border-radius: 50%;
-    transition: transform var(--transition-slow);
+    transition: all var(--transition-slow);
+    box-shadow: var(--shadow-md);
+    border: 3px solid var(--color-primary-light);
+    object-fit: cover;
 }
 
 .mascote-logo:hover {
-    transform: scale(1.05) rotate(5deg);
+    transform: scale(1.08) rotate(8deg);
+    box-shadow: var(--shadow-glow);
 }
 
 .main-logo {
@@ -75,15 +134,31 @@ body {
 h1 {
     font-family: var(--font-heading);
     margin: 10px 0 5px;
-    font-size: 2.8em;
-    color: var(--color-primary);
+    font-size: clamp(2em, 5vw, 2.8em);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: 700;
     letter-spacing: 1px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .tagline {
-    font-size: 1.2em;
+    font-size: clamp(1em, 2.5vw, 1.2em);
     color: var(--color-text-mid);
+    animation: fadeIn 1s ease-out 0.2s both;
 }
 
 .featured-text {
@@ -91,140 +166,281 @@ h1 {
     font-weight: bold;
     color: var(--color-primary-dark);
     margin-top: 20px;
+    padding: 8px 20px;
+    background: rgba(212, 124, 60, 0.1);
+    border-radius: var(--radius-pill);
+    animation: fadeIn 1s ease-out 0.4s both;
 }
 
-/* 3. Botões de Categoria (Layout Horizontal para Desktop) */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 4. Botões de Categoria - Desktop (Melhorados) */
 .categorias-desktop {
-    display: none; /* Oculta em mobile */
+    display: none;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
-    padding: 20px 10px;
+    gap: 12px;
+    padding: 24px 20px;
     background: #fff;
     border-bottom: 1px solid #eee;
+    box-shadow: var(--shadow-xs);
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .category-btn {
-    background: var(--color-secondary);
+    background: var(--color-secondary); /* Fundo CLARO dos botões inativos */
     color: var(--color-primary);
-    border: 1px solid var(--color-primary);
+    border: 2px solid var(--color-primary);
     border-radius: var(--radius-pill);
-    padding: 10px 18px;
+    padding: 12px 24px;
     font-weight: 600;
+    font-size: 0.95em;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all var(--transition-base);
+    position: relative;
+    z-index: 1; /* Novo contexto de empilhamento para garantir que o texto fique ACIMA do ::before */
+    overflow: hidden;
 }
 
+.category-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: var(--color-primary); /* Cor do círculo de animação do HOVER */
+    transform: translate(-50%, -50%);
+    transition: width var(--transition-base), height var(--transition-base);
+    z-index: -1; /* ADICIONADO: Garante que o círculo fique ATRÁS do texto. */
+}
+
+/* O pseudo-elemento ::before agora SÓ cuida da animação de preenchimento (círculo) */
+.category-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* O estado ATIVO/HOVER aplica o background sólido e garante o texto branco */
 .category-btn:hover,
 .category-btn.active {
-    background: var(--color-primary);
-    color: var(--color-text-light);
+    /* OTIMIZAÇÃO: Aplica o gradiente de forma SÓLIDA no fundo do botão */
+    background: var(--gradient-primary); 
+    
+    /* Garante que o texto seja BRANCO (para contraste com o fundo escuro) */
+    color: var(--color-text-light); 
+    
+    border-color: var(--color-primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
+    
+    /* Resetamos o ::before para o active, já que estamos usando o background direto no botão */
+    /* Caso você queira que a categoria ativa seja o gradiente estático e o hover seja a animação,
+       você pode remover o ':hover::before' da regra anterior. Mas assim está mais seguro. */
+}
+/* ... (linhas posteriores) ... */
+.category-btn > * {
+    position: relative;
+    z-index: 1;
 }
 
-/* 4. Ícone do Menu Hambúrguer (Mobile) */
-.menu-button {               /* linha 129 */
-    display: none;           /* linha 130 */
-    position: fixed;         /* linha 132 (antes era absolute) */
-    top: 20px;               /* linha 133 */
-    left: 5px;              /* linha 134 */
-    background: transparent; /* linha 135 */
-    border: none;            /* linha 136 */
-    cursor: pointer;         /* linha 137 */
-    z-index: 1100;           /* linha 138 (aumentei um pouco pra garantir sobreposição da sidebar) */
+/* 5. Menu Hambúrguer Moderno */
+.menu-button {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    z-index: 1100;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.menu-button:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.menu-button:active {
+    transform: scale(0.95);
+}
 
 .hamburger-icon {
-    font-size: 2em;
-    color: var(--color-primary);
+    font-size: 1.8em;
+    color: var(--color-text-light);
     line-height: 1;
+    transition: transform var(--transition-base);
 }
 
-/* 5. Barra Lateral (Mobile) */
+.menu-button.active .hamburger-icon {
+    transform: rotate(90deg);
+}
+
+/* 6. Sidebar Moderna com Blur */
 .sidebar {
     position: fixed;
     top: 0;
     left: -100%;
     width: var(--sidebar-width);
     height: 100vh;
-    background: #fff;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-lg);
     z-index: 1000;
-    transition: left 0.3s ease-in-out;
+    transition: left var(--transition-base);
     padding: 20px;
-    padding-top: 80px;
-    display: none; /* Oculta a barra lateral em desktop */
+    padding-top: 90px;
+    display: none;
+    overflow-y: auto;
+    border-radius: 10px;
 }
 
 .sidebar.active {
     left: 0;
 }
 
+.sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: var(--gradient-primary);
+    opacity: 0.1;
+}
+
 .sidebar .categorias-nav {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 10px;
+    gap: 12px;
 }
 
-/* 6. Grid de Produtos */
+/* Overlay para fechar sidebar */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-base);
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* 7. Grid de Produtos com Animação Escalonada */
 .produtos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     justify-items: center;
-    gap: 30px;
+    gap: 32px;
     padding: 50px 20px;
     background: var(--color-background-soft);
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-/* Resto dos estilos (cards, rodapé, mascote) */
+/* 8. Cards Premium com Efeitos Modernos */
 .card {
     background: #ffffff;
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     padding: 24px;
-    max-width: 300px;
+    max-width: 340px;
+    width: 100%;
     text-align: center;
-    transition: transform var(--transition-slow), box-shadow var(--transition-fast);
+    transition: all var(--transition-slow);
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: fadeIn 0.8s ease-out forwards;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease-out backwards;
+    animation-delay: calc(var(--card-index, 0) * 0.05s);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-base);
+}
+
+.card:hover::before {
+    transform: scaleX(1);
 }
 
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-12px) scale(1.02);
     box-shadow: var(--shadow-hover);
 }
 
 .card-image {
     max-width: 100%;
-    border-radius: 14px;
-    margin-bottom: 15px;
-    transition: transform var(--transition-slow);
+    border-radius: var(--radius-md);
+    margin-bottom: 16px;
+    transition: all var(--transition-slow);
+    box-shadow: var(--shadow-sm);
 }
 
 .card:hover .card-image {
     transform: scale(1.05);
+    box-shadow: var(--shadow-md);
 }
 
 .card-title {
-    font-size: 1.1em;
-    margin: 14px 0 8px;
+    font-size: 1.15em;
+    margin: 16px 0 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    color: #3c3c3c;
-    min-height: 48px;
+    gap: 10px;
+    color: var(--color-text-dark);
+    min-height: 52px;
     text-align: center;
+    font-weight: 600;
 }
 
 .product-name {
@@ -232,118 +448,258 @@ h1 {
 }
 
 .product-price {
-    font-size: 1em;
+    font-size: 1.2em;
     color: var(--color-primary);
     font-weight: bold;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
 }
 
 .card-link {
     display: inline-block;
-    padding: 12px 24px;
-    background: linear-gradient(45deg, var(--color-primary), var(--color-primary-light));
+    padding: 14px 32px;
+    background: var(--gradient-primary);
     color: var(--color-text-light);
     border-radius: var(--radius-pill);
     text-decoration: none;
     font-weight: 600;
-    transition: all var(--transition-fast);
-    box-shadow: 0 4px 12px rgba(212, 124, 60, 0.3);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left var(--transition-slow);
+}
+
+.card-link:hover::before {
+    left: 100%;
 }
 
 .card-link:hover {
-    background: linear-gradient(45deg, var(--color-primary-dark), var(--color-primary));
-    box-shadow: 0 6px 18px rgba(212, 124, 60, 0.5);
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-md);
+}
+
+.card-link:active {
+    transform: translateY(0) scale(0.98);
 }
 
 .logo-loja {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
     background: #fff;
-    border: 1px solid #eee;
+    border: 2px solid #f0f0f0;
     border-radius: 50%;
-    padding: 2px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    padding: 3px;
+    box-shadow: var(--shadow-xs);
+    transition: transform var(--transition-base);
 }
 
+.card:hover .logo-loja {
+    transform: rotate(360deg);
+}
+
+/* 9. Rodapé Moderno */
 .site-footer {
     text-align: center;
-    padding: 30px 15px;
+    padding: 40px 20px;
     font-size: 1em;
-    background: var(--color-secondary);
+    background: var(--gradient-soft);
     color: var(--color-text-mid);
     border-top: 1px solid var(--color-border-light);
+    margin-top: 40px;
 }
 
+/* 10. Mascote Flutuante com Animação Premium */
 .mascote-flutuante {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 80px;
+    bottom: 24px;
+    right: 24px;
+    width: 90px;
     height: auto;
     z-index: 1000;
-    animation: floaty 3s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
     cursor: pointer;
-    transition: transform var(--transition-fast);
+    transition: all var(--transition-base);
+    filter: drop-shadow(var(--shadow-md));
+    border-radius: 50%;
 }
 
 .mascote-flutuante:hover {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.15) rotate(5deg);
+    animation-play-state: paused;
 }
 
-@keyframes floaty {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-10px) rotate(-2deg);
+    }
 }
 
-/* 7. Responsividade */
+/* 11. Scroll suave personalizado */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: var(--radius-pill);
+    border: 2px solid var(--color-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-dark);
+}
+
+/* 12. Responsividade Aprimorada */
 
 @media (min-width: 769px) {
     .menu-button {
-        display: none; /* Esconde o botão de menu em desktop */
+        display: none !important;
     }
+    
     .categorias-desktop {
-        display: flex; /* Exibe os botões de categoria no layout horizontal */
+        display: flex;
+    }
+    
+    .sidebar {
+        display: none !important;
     }
 }
 
 @media (max-width: 768px) {
     .menu-button {
-        display: block; /* Exibe o botão de menu em mobile */
+        display: flex !important;
     }
+    
     .categorias-desktop {
-        display: none; /* Oculta a nav horizontal em mobile */
+        display: none !important;
     }
+    
     .sidebar {
-        display: block; /* Exibe a barra lateral */
+        display: block;
+    }
+    
+    .produtos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 24px;
+        padding: 30px 15px;
+    }
+    
+    .card {
+        max-width: 100%;
     }
 }
 
 @media (max-width: 480px) {
+    :root {
+        --sidebar-width: 260px;
+    }
+    
+    .site-header {
+        padding: 30px 15px 20px;
+    }
+    
+    .mascote-logo {
+        width: 100px;
+        height: 100px;
+    }
+    
     h1 {
-        font-size: 2em;
+        font-size: 1.8em;
     }
+    
     .tagline, .featured-text {
-        font-size: 1em;
+        font-size: 0.95em;
     }
+    
     .category-btn {
-        padding: 8px 16px;
+        padding: 10px 18px;
         font-size: 0.9em;
     }
+    
     .card {
         padding: 18px;
     }
+    
     .card-title {
         font-size: 1em;
+        min-height: 44px;
     }
+    
     .card-link {
-        padding: 10px 20px;
-        font-size: 0.9em;
+        padding: 12px 24px;
+        font-size: 0.95em;
     }
+    
     .mascote-flutuante {
-        width: 60px;
-        bottom: 15px;
-        right: 15px;
+        width: 70px;
+        bottom: 20px;
+        right: 20px;
     }
+    
+    .menu-button {
+        width: 45px;
+        height: 45px;
+        top: 15px;
+        left: 15px;
+    }
+    
+    .produtos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* 13. Animações de Loading (opcional) */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* 14. Estados de foco para acessibilidade */
+*:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+button:focus-visible,
+.card-link:focus-visible,
+.category-btn:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
 }

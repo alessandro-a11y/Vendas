@@ -424,7 +424,79 @@ const produtos = [
         link: "https://mercadolivre.com/sec/2FSNLKU",
         loja: "ml",
         categoria: "tecnologia"
-    }
+    },
+    {
+        nome: "Capa Capinha Transparente Anti Impacto Para iPhone 13",
+        preco: "22,79",
+        imagem: "ML/capinha-iphone-13.webp",
+        link: "https://mercadolivre.com/sec/1yXMsRt",
+        loja: "ml",
+        categoria: "acessorios"
+    },
+    {
+        nome: "Capa Capinha Magsafe P/ iPhone 11 12 13 14 15 16 17 Pro Max",
+        preco: "R$ 27,39",
+        imagem: "ML/Pro.webp",
+        link: "https://mercadolivre.com/sec/21ak6Nt",
+        loja: "ml",
+        categoria: "acessorios"
+    },
+    {
+        nome: "Mouse Jogos 800-2000 Dpi Gamer 6 Botões Gt-m32 Golden Ultra",
+        preco: "R$ 33,97",
+        imagem: "ML/mouse.webp",
+        link: "https://mercadolivre.com/sec/23YE8M4",
+        loja: "ml",
+        categoria: "tecnologia"
+    },
+    {
+        nome: "Kit Limpeza 8x1 Escova Macia Teclado Fones Celular Eficiente",
+        preco: "R$ 19,00",
+        imagem: "ML/kit-limpeza.webp",
+        link: "https://mercadolivre.com/sec/2vhEwD7",
+        loja: "ml",
+        categoria: "acessorios"
+    },
+    {
+        nome:"Corrente De Prata 925 Fina Masculina Veneziana Cordão 60cm Prata 925 Maciça Veneziana Luxo",
+        preco: "R$ 27,28",
+        imagem: "ML/corrente-925.webp",
+        link: "https://mercadolivre.com/sec/1qNimZM",
+        loja: "ml",
+        categoria: "acessorios"
+    },
+    {
+        nome: "Kit 3 Camisetas Térmicas Masculina Segunda Pele Camisa Uv50-",
+        preco: "R$ 78,66",
+        imagem: "ML/kit-camisetas.webp",
+        link: "https://mercadolivre.com/sec/1XDfDZV",
+        loja: "ml",
+        categoria: "roupas"
+    },
+    {
+        nome: "Pochete Feminina Moderna Bolsa Transversal Cintura Fashion Cor Preta",
+        preco: "R$ 19,90",
+        imagem: "ML/pochete.webp",
+        link: "https://mercadolivre.com/sec/1ixoMt7",
+        loja: "ml",
+        categoria: "acessorios"
+    },
+    {
+        nome: "Carregador Portátil 10000mah Power Bank Turbo Rápida 22.5w",
+        preco: "R$ 55,16",
+        imagem: "ML/carregador-portatil.webp",
+        link: "https://mercadolivre.com/sec/1GVV31k",
+        loja: "ml",
+        categoria: "tecnologia"
+    },
+    {
+        nome: "Carregador Portátil 10000mah Power Bank Turbo Rápida 22.5w",
+        preco: "R$ 55,16",
+        imagem: "ML/carregador-portatil.webp",
+        link: "https://mercadolivre.com/sec/1GVV31k",
+        loja: "ml",
+        categoria: "tecnologia"
+    },
 ];
 
 const logos = {
@@ -433,58 +505,281 @@ const logos = {
     ml: "ML/mercado.png"
 };
 
-const container = document.getElementById('produtosContainer');
-const botoesCategoria = document.querySelectorAll('.category-btn');
-const menuButton = document.getElementById('menuButton');
-const sidebar = document.getElementById('sidebar');
+// ===== CONFIGURAÇÃO E CACHE =====
+const CONFIG = {
+    selectors: {
+        container: '#produtosContainer',
+        categoryButtons: '.category-btn',
+        menuButton: '#menuButton',
+        sidebar: '#sidebar'
+    },
+    classes: {
+        active: 'active',
+        card: 'card',
+        logoLoja: 'logo-loja',
+        productName: 'product-name'
+    },
+    categories: {
+        ALL: 'todos'
+    }
+};
 
-function renderizarProdutos(filtro = 'todos') {
-    container.innerHTML = '';
-    const produtosFiltrados = produtos.filter(produto => filtro === 'todos' || produto.categoria === filtro);
+// Cache de elementos DOM
+const elements = {};
 
-    produtosFiltrados.forEach(produto => {
+// ===== UTILITÁRIOS =====
+const utils = {
+    // Capitaliza primeira letra
+    capitalize: (str) => str.charAt(0).toUpperCase() + str.slice(1),
+    
+    // Sanitiza strings para prevenir XSS
+    sanitize: (str) => {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    },
+    
+    // Debounce para otimizar eventos
+    debounce: (func, wait) => {
+        let timeout;
+        return function executedFunction(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func(...args), wait);
+        };
+    }
+};
+
+// ===== GERENCIADOR DE PRODUTOS =====
+class ProductManager {
+    constructor(produtos, logos) {
+        this.produtos = produtos || [];
+        this.logos = logos || {};
+        this.categoriaAtual = CONFIG.categories.ALL;
+        this.fragment = document.createDocumentFragment();
+    }
+
+    // Filtra produtos por categoria
+    filtrar(categoria) {
+        if (categoria === CONFIG.categories.ALL) {
+            return this.produtos;
+        }
+        return this.produtos.filter(p => p.categoria === categoria);
+    }
+
+    // Cria um card de produto otimizado
+    criarCard(produto) {
         const card = document.createElement('div');
-        card.classList.add('card');
-        const logoSrc = logos[produto.loja] || "";
-        const lojaCapitalizada = produto.loja.charAt(0).toUpperCase() + produto.loja.slice(1);
-
+        card.className = CONFIG.classes.card;
+        card.setAttribute('data-categoria', produto.categoria);
+        
+        const logoSrc = this.logos[produto.loja] || '';
+        const lojaCapitalizada = utils.capitalize(produto.loja);
+        
+        // Sanitiza dados para segurança
+        const nomeSanitizado = utils.sanitize(produto.nome);
+        const precoSanitizado = utils.sanitize(produto.preco);
+        
+        // Template otimizado
+        const logoHTML = logoSrc 
+            ? `<img src="${logoSrc}" class="${CONFIG.classes.logoLoja}" alt="Logo ${lojaCapitalizada}" loading="lazy">` 
+            : '';
+        
         card.innerHTML = `
-            <img src="${produto.imagem}" alt="${produto.nome}" class="card-image">
+            <img src="${produto.imagem}" 
+                 alt="${nomeSanitizado}" 
+                 class="card-image" 
+                 loading="lazy"
+                 onerror="this.src='placeholder.jpg'">
             <h2 class="card-title">
-                ${logoSrc ? `<img src="${logoSrc}" class="logo-loja" alt="Logo ${lojaCapitalizada}">` : ""}
-                <span class="product-name">${produto.nome}</span>
+                ${logoHTML}
+                <span class="${CONFIG.classes.productName}">${nomeSanitizado}</span>
             </h2>
-            <p class="product-price">${produto.preco}</p>
-            <a href="${produto.link}" target="_blank" class="card-link">Ver na ${lojaCapitalizada}</a>
+            <p class="product-price" aria-label="Preço: ${precoSanitizado}">${precoSanitizado}</p>
+            <a href="${produto.link}" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="card-link"
+               aria-label="Ver ${nomeSanitizado} na ${lojaCapitalizada}">
+                Ver na ${lojaCapitalizada}
+            </a>
         `;
-
-        container.appendChild(card);
-    });
-}
-
-function filtrarProdutos(categoria) {
-    botoesCategoria.forEach(btn => btn.classList.remove('active'));
-    const botaoAtivo = document.querySelector(`.category-btn[data-categoria="${categoria}"]`);
-    if (botaoAtivo) {
-        botaoAtivo.classList.add('active');
-    }
-    renderizarProdutos(categoria);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    botoesCategoria.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const categoria = e.target.dataset.categoria;
-            filtrarProdutos(categoria);
-            sidebar.classList.remove('active');
-        });
-    });
-
-    if (menuButton) {
-        menuButton.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-        });
+        
+        return card;
     }
 
-    renderizarProdutos();
-});
+    // Renderiza produtos com performance otimizada
+    renderizar(categoria = CONFIG.categories.ALL) {
+        this.categoriaAtual = categoria;
+        const produtosFiltrados = this.filtrar(categoria);
+        
+        // Limpa container
+        elements.container.innerHTML = '';
+        
+        // Usa DocumentFragment para melhor performance
+        this.fragment = document.createDocumentFragment();
+        
+        if (produtosFiltrados.length === 0) {
+            const mensagem = document.createElement('p');
+            mensagem.className = 'no-products';
+            mensagem.textContent = 'Nenhum produto encontrado nesta categoria.';
+            this.fragment.appendChild(mensagem);
+        } else {
+            produtosFiltrados.forEach(produto => {
+                const card = this.criarCard(produto);
+                this.fragment.appendChild(card);
+            });
+        }
+        
+        // Atualiza DOM uma única vez
+        elements.container.appendChild(this.fragment);
+        
+        // Dispara evento customizado
+        this.dispararEvento('produtosRenderizados', { 
+            categoria, 
+            quantidade: produtosFiltrados.length 
+        });
+    }
+
+    // Sistema de eventos customizados
+    dispararEvento(nome, dados) {
+        const evento = new CustomEvent(nome, { detail: dados });
+        document.dispatchEvent(evento);
+    }
+}
+
+// ===== GERENCIADOR DE UI =====
+class UIManager {
+    constructor(productManager) {
+        this.productManager = productManager;
+    }
+
+    // Inicializa elementos DOM
+    inicializarElementos() {
+        elements.container = document.querySelector(CONFIG.selectors.container);
+        elements.categoryButtons = document.querySelectorAll(CONFIG.selectors.categoryButtons);
+        elements.menuButton = document.querySelector(CONFIG.selectors.menuButton);
+        elements.sidebar = document.querySelector(CONFIG.selectors.sidebar);
+
+        // Valida elementos essenciais
+        if (!elements.container) {
+            console.error('Container de produtos não encontrado');
+            return false;
+        }
+        return true;
+    }
+
+    // Atualiza estado dos botões de categoria
+    atualizarBotoesCategoria(categoriaAtiva) {
+        elements.categoryButtons.forEach(btn => {
+            const isActive = btn.dataset.categoria === categoriaAtiva;
+            btn.classList.toggle(CONFIG.classes.active, isActive);
+            btn.setAttribute('aria-pressed', isActive);
+        });
+    }
+
+    // Filtra produtos e atualiza UI
+    filtrarProdutos(categoria) {
+        this.atualizarBotoesCategoria(categoria);
+        this.productManager.renderizar(categoria);
+        this.fecharSidebar();
+    }
+
+    // Toggle sidebar
+    toggleSidebar() {
+        const isActive = elements.sidebar?.classList.toggle(CONFIG.classes.active);
+        elements.menuButton?.setAttribute('aria-expanded', isActive);
+    }
+
+    // Fecha sidebar
+    fecharSidebar() {
+        if (elements.sidebar) {
+            elements.sidebar.classList.remove(CONFIG.classes.active);
+            elements.menuButton?.setAttribute('aria-expanded', 'false');
+        }
+    }
+
+    // Configura listeners de eventos
+    configurarEventos() {
+        // Eventos de categoria
+        elements.categoryButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const categoria = e.currentTarget.dataset.categoria;
+                if (categoria) {
+                    this.filtrarProdutos(categoria);
+                }
+            });
+        });
+
+        // Evento do menu mobile
+        if (elements.menuButton && elements.sidebar) {
+            elements.menuButton.addEventListener('click', () => {
+                this.toggleSidebar();
+            });
+
+            // Fecha sidebar ao clicar fora
+            document.addEventListener('click', (e) => {
+                if (elements.sidebar.classList.contains(CONFIG.classes.active) &&
+                    !elements.sidebar.contains(e.target) &&
+                    !elements.menuButton.contains(e.target)) {
+                    this.fecharSidebar();
+                }
+            });
+
+            // Fecha sidebar com tecla Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && elements.sidebar.classList.contains(CONFIG.classes.active)) {
+                    this.fecharSidebar();
+                }
+            });
+        }
+
+        // Event listener customizado
+        document.addEventListener('produtosRenderizados', (e) => {
+            console.log(`✅ ${e.detail.quantidade} produtos renderizados na categoria: ${e.detail.categoria}`);
+        });
+    }
+}
+
+// ===== INICIALIZAÇÃO =====
+class App {
+    constructor(produtos, logos) {
+        this.productManager = new ProductManager(produtos, logos);
+        this.uiManager = new UIManager(this.productManager);
+    }
+
+    init() {
+        // Aguarda DOM estar pronto
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.start());
+        } else {
+            this.start();
+        }
+    }
+
+    start() {
+        // Inicializa elementos
+        if (!this.uiManager.inicializarElementos()) {
+            console.error('Falha ao inicializar elementos DOM');
+            return;
+        }
+
+        // Configura eventos
+        this.uiManager.configurarEventos();
+
+        // Renderização inicial
+        this.productManager.renderizar();
+
+        console.log('🚀 App inicializado com sucesso!');
+    }
+}
+
+// ===== EXPORTAÇÃO E INICIALIZAÇÃO =====
+// Para usar, basta instanciar:
+// const app = new App(produtos, logos);
+// app.init();
+
+// Se as variáveis produtos e logos já existem globalmente:
+if (typeof produtos !== 'undefined' && typeof logos !== 'undefined') {
+    const app = new App(produtos, logos);
+    app.init();
+}

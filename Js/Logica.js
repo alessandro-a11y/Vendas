@@ -490,12 +490,52 @@ const produtos = [
         categoria: "tecnologia"
     },
     {
-        nome: "Carregador Portátil 10000mah Power Bank Turbo Rápida 22.5w",
-        preco: "R$ 55,16",
-        imagem: "ML/carregador-portatil.webp",
-        link: "https://mercadolivre.com/sec/1GVV31k",
+        nome: "Balança Digital Eletrônica Cozinha Alta Precisão 10 Kg Cor Branco",
+        preco: "R$ 18,90",
+        imagem: "ML/balanca.webp",
+        link: "https://mercadolivre.com/sec/2NSHDgk",
         loja: "ml",
         categoria: "tecnologia"
+    },
+        {
+        nome: "Correntinha Feminina Lindo Kit Com Colar Brincos E Pulseira",
+        preco: "R$ 31,90",
+        imagem: "ML/correntinha.webp",
+        link: "https://mercadolivre.com/sec/1FXZiZR",
+        loja: "ml",
+        categoria: "acessorios"
+    },
+     {
+        nome: "Camiseta Compressão Frente Cyber Tribal Rash Guard Uv 50+",
+        preco: "R$ 37,90",
+        imagem: "ML/camiseta-compressao.webp",
+        link: "https://mercadolivre.com/sec/23RnwPU",
+        loja: "ml",
+        categoria: "roupas"
+    },
+    {
+        nome: "Chaleira Eletrica Atacama 1,8l - Unitermi",
+        preco: "R$ 41,90",
+        imagem: "ML/chaleira.webp",
+        link: "https://mercadolivre.com/sec/1BjjLAe",
+        loja: "ml",
+        categoria: "decoracao"
+    },
+    {
+        nome: "Confissões de Santo Agostinho - Edição de Luxo Almofadada",
+        preco: "R$ 35,90",
+        imagem: "ML/confissoes-santo-agostinho.webp",
+        link: "https://mercadolivre.com/sec/2UPiv2t",
+        loja: "ml",
+        categoria: "todos"
+    },
+    {
+        nome: "Confissões de Santo Agostinho - Edição de Luxo Almofadada",
+        preco: "R$ 35,90",
+        imagem: "ML/confissoes-santo-agostinho.webp",
+        link: "https://mercadolivre.com/sec/2UPiv2t",
+        loja: "ml",
+        categoria: "todos"
     },
 ];
 
